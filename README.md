@@ -21,7 +21,7 @@ in composer.json
 ```
 
 ```shell
-composer require INOMA-SRL/laravel-fattura-pa
+composer require inoma/laravel-fattura-pa:@dev -W
 ```
 
 ## Usage
