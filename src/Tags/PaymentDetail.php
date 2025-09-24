@@ -22,7 +22,7 @@ class PaymentDetail extends Tag {
     /**
      * @var ?\Condividendo\FatturaPA\Tags\PaymentExpirationDate
      */
-    private $paymentExpirationDate = null;
+    private $paymentExpirationDate;
 
     /**
      * @var \Condividendo\FatturaPA\Tags\PaymentAmount

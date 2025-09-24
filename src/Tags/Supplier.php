@@ -25,12 +25,12 @@ class Supplier extends Tag {
     /**
      * @var ?\Condividendo\FatturaPA\Tags\REARegistration
      */
-    private $reaRegistration = null;
+    private $reaRegistration;
 
     /**
      * @var ?\Condividendo\FatturaPA\Tags\Contacts
      */
-    private $contacts = null;
+    private $contacts;
 
     public function __construct() {
         $this->taxableEntity = TaxableEntity::make();

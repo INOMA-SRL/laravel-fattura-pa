@@ -19,7 +19,7 @@ class Address extends Tag {
     /**
      * @var ?\Condividendo\FatturaPA\Tags\StreetNumber
      */
-    private $streetNumber = null;
+    private $streetNumber;
 
     /**
      * @var \Condividendo\FatturaPA\Tags\City

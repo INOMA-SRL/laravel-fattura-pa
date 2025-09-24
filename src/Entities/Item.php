@@ -26,7 +26,7 @@ class Item extends Entity {
     /**
      * @var ?\Brick\Math\BigDecimal
      */
-    private $quantity = null;
+    private $quantity;
 
     /**
      * @var \Brick\Math\BigDecimal
@@ -36,7 +36,7 @@ class Item extends Entity {
     /**
      * @var ?\Brick\Math\BigDecimal
      */
-    private $totalPrice = null;
+    private $totalPrice;
 
     /**
      * @var \Brick\Math\BigDecimal

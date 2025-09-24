@@ -27,7 +27,7 @@ class Body extends Tag {
     /**
      * @var ?\Condividendo\FatturaPA\Tags\PaymentData
      */
-    private $paymentData = null;
+    private $paymentData;
 
     public function __construct() {
         $this->generalData = GeneralData::make();

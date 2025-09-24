@@ -16,7 +16,7 @@ return RectorConfig::configure()
 //     LaravelSetList::LARAVEL_120,
 // ])
     ->withPreparedSets(
-        // deadCode: true,
+        deadCode: true,
         // codeQuality: true,
         // typeDeclarations: true,
         // privatization: true,

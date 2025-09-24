@@ -34,17 +34,17 @@ class Body extends Entity {
     /**
      * @var ?\Illuminate\Support\Carbon
      */
-    private $date = null;
+    private $date;
 
     /**
      * @var ?\Brick\Math\BigDecimal
      */
-    private $amount = null;
+    private $amount;
 
     /**
      * @var ?string
      */
-    private $description = null;
+    private $description;
 
     /**
      * @var string
@@ -54,22 +54,22 @@ class Body extends Entity {
     /**
      * @var ?\Condividendo\FatturaPA\Enums\PaymentCondition
      */
-    private $paymentCondition = null;
+    private $paymentCondition;
 
     /**
      * @var ?\Condividendo\FatturaPA\Enums\PaymentMethod
      */
-    private $paymentMethod = null;
+    private $paymentMethod;
 
     /**
      * @var ?\Illuminate\Support\Carbon
      */
-    private $paymentExpirationDate = null;
+    private $paymentExpirationDate;
 
     /**
      * @var ?\Brick\Math\BigDecimal
      */
-    private $paymentAmount = null;
+    private $paymentAmount;
 
     /**
      * @var array<\Condividendo\FatturaPA\Entities\Item>

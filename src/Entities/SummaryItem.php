@@ -31,7 +31,7 @@ class SummaryItem extends Entity {
     /**
      * @var ?\Brick\Math\BigDecimal
      */
-    private $taxAmount = null;
+    private $taxAmount;
 
     /**
      * @var ?\Condividendo\FatturaPA\Enums\VatCollectionMode

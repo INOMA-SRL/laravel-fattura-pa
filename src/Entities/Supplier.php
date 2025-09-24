@@ -48,27 +48,27 @@ class Supplier extends Entity {
     /**
      * @var ?string
      */
-    private $reaOfficeCode = null;
+    private $reaOfficeCode;
 
     /**
      * @var ?string
      */
-    private $reaNumber = null;
+    private $reaNumber;
 
     /**
      * @var ?\Brick\Math\BigDecimal
      */
-    private $reaCapital = null;
+    private $reaCapital;
 
     /**
      * @var ?\Condividendo\FatturaPA\Enums\ShareHolder
      */
-    private $reaShareHolders = null;
+    private $reaShareHolders;
 
     /**
      * @var ?\Condividendo\FatturaPA\Enums\LiquidationStatus
      */
-    private $reaLiquidationStatus = null;
+    private $reaLiquidationStatus;
 
     /**
      * @var \Condividendo\FatturaPA\Entities\Address
@@ -78,17 +78,17 @@ class Supplier extends Entity {
     /**
      * @var ?string
      */
-    private $contactsEmail = null;
+    private $contactsEmail;
 
     /**
      * @var ?string
      */
-    private $contactsFax = null;
+    private $contactsFax;
 
     /**
      * @var ?string
      */
-    private $contactsPhoneNumber = null;
+    private $contactsPhoneNumber;
 
     public function companyName(string $companyName): self {
         $this->companyName = $companyName;

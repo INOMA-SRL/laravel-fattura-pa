@@ -18,7 +18,7 @@ class Address extends Entity {
     /**
      * @var ?string
      */
-    private $streetNumber = null;
+    private $streetNumber;
 
     /**
      * @var string

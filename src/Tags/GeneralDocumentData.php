@@ -37,12 +37,12 @@ class GeneralDocumentData extends Tag {
     /**
      * @var ?\Condividendo\FatturaPA\Tags\DocumentAmount
      */
-    private $amount = null;
+    private $amount;
 
     /**
      * @var ?\Condividendo\FatturaPA\Tags\DocumentDescription
      */
-    private $description = null;
+    private $description;
 
     public function setType(Type $type): self {
         $this->type = DocumentType::make()->setType($type);

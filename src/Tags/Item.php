@@ -25,7 +25,7 @@ class Item extends Tag {
     /**
      * @var ?\Condividendo\FatturaPA\Tags\Quantity
      */
-    private $quantity = null;
+    private $quantity;
 
     /**
      * @var \Condividendo\FatturaPA\Tags\UnitPrice
