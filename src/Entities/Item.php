@@ -13,35 +13,17 @@ class Item extends Entity {
     use Makeable;
     use UsesDecimal;
 
-    /**
-     * @var int
-     */
-    private $lineNumber;
+    private ?int $lineNumber = null;
 
-    /**
-     * @var string
-     */
-    private $description;
+    private ?string $description = null;
 
-    /**
-     * @var ?\Brick\Math\BigDecimal
-     */
-    private $quantity;
+    private ?\Brick\Math\BigDecimal $quantity = null;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $unitPrice;
+    private ?\Brick\Math\BigDecimal $unitPrice = null;
 
-    /**
-     * @var ?\Brick\Math\BigDecimal
-     */
-    private $totalPrice;
+    private ?\Brick\Math\BigDecimal $totalPrice = null;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $taxRate;
+    private ?\Brick\Math\BigDecimal $taxRate = null;
 
     public function number(int $lineNumber): self {
         $this->lineNumber = $lineNumber;

@@ -12,10 +12,7 @@ use DOMElement;
 class TotalPrice extends Tag {
     use Makeable;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $totalPrice;
+    private ?\Brick\Math\BigDecimal $totalPrice = null;
 
     public function setTotalPrice(BigDecimal $totalPrice): self {
         static::checkScale($totalPrice, 2, 8);

@@ -11,10 +11,7 @@ use DOMElement;
 class RecipientPec extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $pec;
+    private ?string $pec = null;
 
     public function setPec(string $pec): self {
         $this->pec = $pec;

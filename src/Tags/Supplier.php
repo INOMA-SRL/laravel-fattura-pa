@@ -17,20 +17,11 @@ class Supplier extends Tag {
      */
     private $taxableEntity;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Address
-     */
-    private $address;
+    private ?\Condividendo\FatturaPA\Tags\Address $address = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\REARegistration
-     */
-    private $reaRegistration;
+    private ?\Condividendo\FatturaPA\Tags\REARegistration $reaRegistration = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\Contacts
-     */
-    private $contacts;
+    private ?\Condividendo\FatturaPA\Tags\Contacts $contacts = null;
 
     public function __construct() {
         $this->taxableEntity = TaxableEntity::make();

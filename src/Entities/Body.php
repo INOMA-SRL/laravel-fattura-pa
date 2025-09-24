@@ -21,65 +21,35 @@ class Body extends Entity {
     use UsesDate;
     use UsesDecimal;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\Type
-     */
-    private $type;
+    private ?\Condividendo\FatturaPA\Enums\Type $type = null;
 
-    /**
-     * @var string
-     */
-    private $currency;
+    private ?string $currency = null;
 
-    /**
-     * @var ?\Illuminate\Support\Carbon
-     */
-    private $date;
+    private ?\Illuminate\Support\Carbon $date = null;
 
-    /**
-     * @var ?\Brick\Math\BigDecimal
-     */
-    private $amount;
+    private ?\Brick\Math\BigDecimal $amount = null;
 
-    /**
-     * @var ?string
-     */
-    private $description;
+    private ?string $description = null;
 
-    /**
-     * @var string
-     */
-    private $number;
+    private ?string $number = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\PaymentCondition
-     */
-    private $paymentCondition;
+    private ?\Condividendo\FatturaPA\Enums\PaymentCondition $paymentCondition = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\PaymentMethod
-     */
-    private $paymentMethod;
+    private ?\Condividendo\FatturaPA\Enums\PaymentMethod $paymentMethod = null;
 
-    /**
-     * @var ?\Illuminate\Support\Carbon
-     */
-    private $paymentExpirationDate;
+    private ?\Illuminate\Support\Carbon $paymentExpirationDate = null;
 
-    /**
-     * @var ?\Brick\Math\BigDecimal
-     */
-    private $paymentAmount;
+    private ?\Brick\Math\BigDecimal $paymentAmount = null;
 
     /**
      * @var array<\Condividendo\FatturaPA\Entities\Item>
      */
-    private $items;
+    private ?array $items = null;
 
     /**
      * @var array<\Condividendo\FatturaPA\Entities\SummaryItem>
      */
-    private $summaryItems;
+    private ?array $summaryItems = null;
 
     public function type(Type $type): self {
         $this->type = $type;

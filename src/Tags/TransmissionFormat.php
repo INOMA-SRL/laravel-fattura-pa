@@ -15,10 +15,7 @@ use DOMElement;
 class TransmissionFormat extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\TransmissionFormat
-     */
-    private $format;
+    private ?\Condividendo\FatturaPA\Enums\TransmissionFormat $format = null;
 
     public function setFormat(TransmissionFormatEnum $format): self {
         $this->format = $format;

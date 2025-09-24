@@ -12,10 +12,7 @@ use DOMElement;
 class Nature extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\Nature
-     */
-    private $nature;
+    private ?\Condividendo\FatturaPA\Enums\Nature $nature = null;
 
     public function setNature(NatureEnum $nature): self {
         $this->nature = $nature;

@@ -12,10 +12,7 @@ use Illuminate\Support\Carbon;
 class PaymentExpirationDate extends Tag {
     use Makeable;
 
-    /**
-     * @var \Illuminate\Support\Carbon
-     */
-    private $date;
+    private ?\Illuminate\Support\Carbon $date = null;
 
     public function setPaymentExpirationDate(Carbon $date): self {
         $this->date = $date;

@@ -12,10 +12,7 @@ use DOMElement;
 class LiquidationStatus extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\LiquidationStatus
-     */
-    private $status;
+    private ?\Condividendo\FatturaPA\Enums\LiquidationStatus $status = null;
 
     public function setLiquidationStatus(LiquidationStatusEnum $status): self {
         $this->status = $status;

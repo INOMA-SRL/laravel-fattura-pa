@@ -14,12 +14,12 @@ class GoodsServicesData extends Tag {
     /**
      * @var array<\Condividendo\FatturaPA\Tags\Item>
      */
-    private $lineItems;
+    private ?array $lineItems = null;
 
     /**
      * @var array<\Condividendo\FatturaPA\Tags\SummaryItem>
      */
-    private $summaryItems;
+    private ?array $summaryItems = null;
 
     /**
      * @param  array<int, \Condividendo\FatturaPA\Tags\Item>  $items

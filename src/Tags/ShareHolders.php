@@ -11,10 +11,7 @@ use DOMElement;
 class ShareHolders extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $shareHolders;
+    private ?string $shareHolders = null;
 
     public function setShareHolders(string $shareHolders): self {
         $this->shareHolders = $shareHolders;

@@ -11,10 +11,7 @@ use DOMElement;
 class Fax extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $fax;
+    private ?string $fax = null;
 
     public function setFax(string $fax): self {
         $this->fax = $fax;

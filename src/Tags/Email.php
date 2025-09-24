@@ -11,10 +11,7 @@ use DOMElement;
 class Email extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $email;
+    private ?string $email = null;
 
     public function setEmail(string $email): self {
         $this->email = $email;

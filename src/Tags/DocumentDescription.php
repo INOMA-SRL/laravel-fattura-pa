@@ -11,10 +11,7 @@ use DOMElement;
 class DocumentDescription extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $description;
+    private ?string $description = null;
 
     public function setDocumentDescription(string $description): self {
         $this->description = $description;

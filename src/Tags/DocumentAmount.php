@@ -12,10 +12,7 @@ use DOMElement;
 class DocumentAmount extends Tag {
     use Makeable;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $amount;
+    private ?\Brick\Math\BigDecimal $amount = null;
 
     public function setDocumentAmount(BigDecimal $amount): self {
         static::checkScale($amount);

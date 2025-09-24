@@ -12,10 +12,7 @@ use DOMElement;
 class VatCollectionMode extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\VatCollectionMode
-     */
-    private $collectionMode;
+    private ?\Condividendo\FatturaPA\Enums\VatCollectionMode $collectionMode = null;
 
     public function setVatCollectionMode(VatCollectionModeEnum $collectionMode): self {
         $this->collectionMode = $collectionMode;

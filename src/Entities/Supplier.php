@@ -20,75 +20,33 @@ class Supplier extends Entity {
     use Makeable;
     use UsesDecimal;
 
-    /**
-     * @var string
-     */
-    private $companyName;
+    private ?string $companyName = null;
 
-    /**
-     * @var ?string
-     */
-    private $fiscalCode;
+    private ?string $fiscalCode = null;
 
-    /**
-     * @var string
-     */
-    private $vatCountryId;
+    private ?string $vatCountryId = null;
 
-    /**
-     * @var string
-     */
-    private $vatNumber;
+    private ?string $vatNumber = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\TaxRegime
-     */
-    private $taxRegime;
+    private ?\Condividendo\FatturaPA\Enums\TaxRegime $taxRegime = null;
 
-    /**
-     * @var ?string
-     */
-    private $reaOfficeCode;
+    private ?string $reaOfficeCode = null;
 
-    /**
-     * @var ?string
-     */
-    private $reaNumber;
+    private ?string $reaNumber = null;
 
-    /**
-     * @var ?\Brick\Math\BigDecimal
-     */
-    private $reaCapital;
+    private ?\Brick\Math\BigDecimal $reaCapital = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\ShareHolder
-     */
-    private $reaShareHolders;
+    private ?\Condividendo\FatturaPA\Enums\ShareHolder $reaShareHolders = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\LiquidationStatus
-     */
-    private $reaLiquidationStatus;
+    private ?\Condividendo\FatturaPA\Enums\LiquidationStatus $reaLiquidationStatus = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Entities\Address
-     */
-    private $address;
+    private ?\Condividendo\FatturaPA\Entities\Address $address = null;
 
-    /**
-     * @var ?string
-     */
-    private $contactsEmail;
+    private ?string $contactsEmail = null;
 
-    /**
-     * @var ?string
-     */
-    private $contactsFax;
+    private ?string $contactsFax = null;
 
-    /**
-     * @var ?string
-     */
-    private $contactsPhoneNumber;
+    private ?string $contactsPhoneNumber = null;
 
     public function companyName(string $companyName): self {
         $this->companyName = $companyName;

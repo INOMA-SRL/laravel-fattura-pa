@@ -22,60 +22,30 @@ use DOMDocument;
 use SimpleXMLElement;
 
 class FatturaPABuilder {
-    /**
-     * @var \Condividendo\FatturaPA\Enums\TransmissionFormat
-     */
-    private $transmissionFormat;
+    private ?\Condividendo\FatturaPA\Enums\TransmissionFormat $transmissionFormat = null;
 
-    /**
-     * @var string
-     */
-    private $senderIdCountry;
+    private ?string $senderIdCountry = null;
 
-    /**
-     * @var string
-     */
-    private $senderIdCode;
+    private ?string $senderIdCode = null;
 
-    /**
-     * @var ?string
-     */
-    private $senderEmail;
+    private ?string $senderEmail = null;
 
-    /**
-     * @var ?string
-     */
-    private $senderPhone;
+    private ?string $senderPhone = null;
 
-    /**
-     * @var string
-     */
-    private $transmissionSequence;
+    private ?string $transmissionSequence = null;
 
-    /**
-     * @var string
-     */
-    private $recipientCode;
+    private ?string $recipientCode = null;
 
-    /**
-     * @var string
-     */
-    private $recipientPec;
+    private ?string $recipientPec = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Entities\Supplier
-     */
-    private $supplier;
+    private ?\Condividendo\FatturaPA\Entities\Supplier $supplier = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Entities\Customer
-     */
-    private $customer;
+    private ?\Condividendo\FatturaPA\Entities\Customer $customer = null;
 
     /**
      * @var array<\Condividendo\FatturaPA\Entities\Body>
      */
-    private $bodies = [];
+    private array $bodies = [];
 
     public function transmissionFormat(TransmissionFormat $format): self {
         $this->transmissionFormat = $format;

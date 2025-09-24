@@ -11,10 +11,7 @@ use DOMElement;
 class Phone extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $phone;
+    private ?string $phone = null;
 
     public function setPhone(string $phone): self {
         $this->phone = $phone;

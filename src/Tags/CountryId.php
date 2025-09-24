@@ -11,10 +11,7 @@ use DOMElement;
 class CountryId extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $id;
+    private ?string $id = null;
 
     public function setId(string $id): self {
         $this->id = $id;

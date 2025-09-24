@@ -12,10 +12,7 @@ use DOMElement;
 class Duty extends Tag {
     use Makeable;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $duty;
+    private ?\Brick\Math\BigDecimal $duty = null;
 
     public function setDuty(BigDecimal $duty): self {
         static::checkScale($duty);

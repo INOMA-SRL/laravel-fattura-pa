@@ -12,10 +12,7 @@ use DOMElement;
 class Capital extends Tag {
     use Makeable;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $capital;
+    private ?\Brick\Math\BigDecimal $capital = null;
 
     public function setCapital(BigDecimal $capital): self {
         static::checkScale($capital);

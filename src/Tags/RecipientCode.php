@@ -11,10 +11,7 @@ use DOMElement;
 class RecipientCode extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $code;
+    private ?string $code = null;
 
     public function setCode(string $code): self {
         $this->code = $code;

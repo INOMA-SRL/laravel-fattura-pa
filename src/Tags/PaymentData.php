@@ -17,10 +17,7 @@ class PaymentData extends Tag {
      */
     private $paymentCondition;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\PaymentDetail
-     */
-    private $paymentDetail;
+    private ?\Condividendo\FatturaPA\Tags\PaymentDetail $paymentDetail = null;
 
     public function setPaymentDetail(PaymentDetail $paymentDetail): self {
         $this->paymentDetail = $paymentDetail;

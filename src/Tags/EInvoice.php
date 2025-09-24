@@ -12,20 +12,14 @@ use DOMElement;
 class EInvoice extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\TransmissionFormat
-     */
-    private $format;
+    private ?\Condividendo\FatturaPA\Enums\TransmissionFormat $format = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Header
-     */
-    private $header;
+    private ?\Condividendo\FatturaPA\Tags\Header $header = null;
 
     /**
      * @var array<\Condividendo\FatturaPA\Tags\Body>
      */
-    private $bodies = [];
+    private array $bodies = [];
 
     public function setTransmissionFormat(TransmissionFormat $format): self {
         $this->format = $format;

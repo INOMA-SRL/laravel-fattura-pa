@@ -11,10 +11,7 @@ use DOMElement;
 class AddressLine extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $value;
+    private ?string $value = null;
 
     public function setAddressLine(string $value): self {
         $this->value = $value;

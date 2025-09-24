@@ -12,10 +12,7 @@ use DOMElement;
 class RegulatoryReference extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\RegulatoryReference
-     */
-    private $regulatoryReference;
+    private ?\Condividendo\FatturaPA\Enums\RegulatoryReference $regulatoryReference = null;
 
     public function setRegulatoryReference(RegulatoryReferenceEnum $regulatoryReference): self {
         $this->regulatoryReference = $regulatoryReference;

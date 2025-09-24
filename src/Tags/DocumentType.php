@@ -12,10 +12,7 @@ use DOMElement;
 class DocumentType extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\Type
-     */
-    private $type;
+    private ?\Condividendo\FatturaPA\Enums\Type $type = null;
 
     public function setType(Type $type): self {
         $this->type = $type;

@@ -11,10 +11,7 @@ use DOMElement;
 class OfficeCode extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $code;
+    private ?string $code = null;
 
     public function setOfficeCode(string $code): self {
         $this->code = $code;

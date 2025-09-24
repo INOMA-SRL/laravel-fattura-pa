@@ -14,10 +14,7 @@ use DOMElement;
 class TransmissionSequence extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $sequence;
+    private ?string $sequence = null;
 
     public function setSequence(string $sequence): self {
         $this->sequence = $sequence;

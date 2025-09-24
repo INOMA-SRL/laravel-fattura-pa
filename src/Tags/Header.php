@@ -11,20 +11,11 @@ use DOMElement;
 class Header extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TransmissionData
-     */
-    private $transmissionData;
+    private ?\Condividendo\FatturaPA\Tags\TransmissionData $transmissionData = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Supplier
-     */
-    private $supplier;
+    private ?\Condividendo\FatturaPA\Tags\Supplier $supplier = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Customer
-     */
-    private $customer;
+    private ?\Condividendo\FatturaPA\Tags\Customer $customer = null;
 
     public function setTransmissionData(TransmissionData $data): self {
         $this->transmissionData = $data;

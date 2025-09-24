@@ -12,10 +12,7 @@ use DOMElement;
 class PaymentMethod extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\PaymentMethod
-     */
-    private $method;
+    private ?\Condividendo\FatturaPA\Enums\PaymentMethod $method = null;
 
     public function setPaymentMethod(PaymentMethodEnum $method): self {
         $this->method = $method;

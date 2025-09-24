@@ -11,10 +11,7 @@ use DOMElement;
 class ProvinceOrState extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $provinceOrState;
+    private ?string $provinceOrState = null;
 
     public function setProvinceOrState(string $provinceOrState): self {
         $this->provinceOrState = $provinceOrState;

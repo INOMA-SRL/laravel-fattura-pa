@@ -6,13 +6,11 @@ namespace Condividendo\FatturaPA\Traits;
 
 trait Makeable {
     /**
-     * @return self
      *
      * @noinspection PhpMissingReturnTypeInspection
-     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint
      */
-    public static function make() {
+    public static function make(): static {
         return new static;
     }
 }

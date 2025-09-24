@@ -12,10 +12,7 @@ use DOMElement;
 class Quantity extends Tag {
     use Makeable;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $quantity;
+    private ?\Brick\Math\BigDecimal $quantity = null;
 
     public function setQuantity(BigDecimal $qty): self {
         $this->quantity = $qty;

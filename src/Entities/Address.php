@@ -10,35 +10,17 @@ use Condividendo\FatturaPA\Traits\Makeable;
 class Address extends Entity {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $addressLine;
+    private ?string $addressLine = null;
 
-    /**
-     * @var ?string
-     */
-    private $streetNumber;
+    private ?string $streetNumber = null;
 
-    /**
-     * @var string
-     */
-    private $city;
+    private ?string $city = null;
 
-    /**
-     * @var string
-     */
-    private $postalCode;
+    private ?string $postalCode = null;
 
-    /**
-     * @var string
-     */
-    private $provinceOrState;
+    private ?string $provinceOrState = null;
 
-    /**
-     * @var string
-     */
-    private $country;
+    private ?string $country = null;
 
     public function addressLine(string $addressLine): self {
         $this->addressLine = $addressLine;

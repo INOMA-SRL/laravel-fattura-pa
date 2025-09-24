@@ -12,10 +12,7 @@ use DOMElement;
 class VatTax extends Tag {
     use Makeable;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $percentage;
+    private ?\Brick\Math\BigDecimal $percentage = null;
 
     /**
      * @param  \Brick\Math\BigDecimal  $ratio  Percentage as a ratio between [0,1]

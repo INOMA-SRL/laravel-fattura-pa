@@ -11,10 +11,7 @@ use DOMElement;
 class Title extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $title;
+    private ?string $title = null;
 
     public function setTitle(string $title): self {
         $this->title = $title;

@@ -13,50 +13,23 @@ class Customer extends Entity {
     use HasVatNumber;
     use Makeable;
 
-    /**
-     * @var ?string
-     */
-    private $companyName;
+    private ?string $companyName = null;
 
-    /**
-     * @var ?string
-     */
-    private $firstName;
+    private ?string $firstName = null;
 
-    /**
-     * @var ?string
-     */
-    private $lastName;
+    private ?string $lastName = null;
 
-    /**
-     * @var ?string
-     */
-    private $title;
+    private ?string $title = null;
 
-    /**
-     * @var ?string
-     */
-    private $fiscalCode;
+    private ?string $fiscalCode = null;
 
-    /**
-     * @var ?string
-     */
-    private $vatCountryId;
+    private ?string $vatCountryId = null;
 
-    /**
-     * @var ?string
-     */
-    private $vatNumber;
+    private ?string $vatNumber = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\TaxRegime
-     */
-    private $taxRegime;
+    private ?\Condividendo\FatturaPA\Enums\TaxRegime $taxRegime = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Entities\Address
-     */
-    private $address;
+    private ?\Condividendo\FatturaPA\Entities\Address $address = null;
 
     public function companyName(string $companyName): self {
         $this->companyName = $companyName;

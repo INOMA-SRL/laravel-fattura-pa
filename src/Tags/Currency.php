@@ -11,10 +11,7 @@ use DOMElement;
 class Currency extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $currency;
+    private ?string $currency = null;
 
     public function setCurrency(string $currency): self {
         $this->currency = $currency;

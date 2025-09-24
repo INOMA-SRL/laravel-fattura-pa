@@ -12,35 +12,20 @@ use DOMElement;
 class TransmissionData extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TransmitterId
-     */
-    private $transmitterId;
+    private ?\Condividendo\FatturaPA\Tags\TransmitterId $transmitterId = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TransmissionSequence
-     */
-    private $transmissionSequence;
+    private ?\Condividendo\FatturaPA\Tags\TransmissionSequence $transmissionSequence = null;
 
     /**
      * @var \Condividendo\FatturaPA\Tags\TransmissionFormat
      */
     private $transmissionFormat;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\RecipientCode
-     */
-    private $recipientCode;
+    private ?\Condividendo\FatturaPA\Tags\RecipientCode $recipientCode = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\TransmitterContacts
-     */
-    private $transmitterContacts;
+    private ?\Condividendo\FatturaPA\Tags\TransmitterContacts $transmitterContacts = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\RecipientPec
-     */
-    private $recipientPec;
+    private ?\Condividendo\FatturaPA\Tags\RecipientPec $recipientPec = null;
 
     public function setTransmitterId(TransmitterId $id): self {
         $this->transmitterId = $id;

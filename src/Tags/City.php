@@ -11,10 +11,7 @@ use DOMElement;
 class City extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $city;
+    private ?string $city = null;
 
     public function setCity(string $city): self {
         $this->city = $city;

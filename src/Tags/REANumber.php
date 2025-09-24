@@ -11,10 +11,7 @@ use DOMElement;
 class REANumber extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $number;
+    private ?string $number = null;
 
     public function setREANumber(string $number): self {
         $this->number = $number;

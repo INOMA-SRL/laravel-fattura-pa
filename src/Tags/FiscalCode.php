@@ -11,10 +11,7 @@ use DOMElement;
 class FiscalCode extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $code;
+    private ?string $code = null;
 
     public function setFiscalCode(string $code): self {
         $this->code = $code;

@@ -12,10 +12,7 @@ use DOMElement;
 class PaymentCondition extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Enums\PaymentCondition
-     */
-    private $paymentCondition;
+    private ?\Condividendo\FatturaPA\Enums\PaymentCondition $paymentCondition = null;
 
     public function setPaymentCondition(PaymentConditionEnum $paymentCondition): self {
         $this->paymentCondition = $paymentCondition;

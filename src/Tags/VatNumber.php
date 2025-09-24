@@ -11,15 +11,9 @@ use DOMElement;
 class VatNumber extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\CountryId
-     */
-    private $countryId;
+    private ?\Condividendo\FatturaPA\Tags\CountryId $countryId = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\CodeId
-     */
-    private $codeId;
+    private ?\Condividendo\FatturaPA\Tags\CodeId $codeId = null;
 
     public function setCountryId(CountryId $id): self {
         $this->countryId = $id;

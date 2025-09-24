@@ -18,35 +18,17 @@ class SummaryItem extends Entity {
     use Makeable;
     use UsesDecimal;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $taxRate;
+    private ?\Brick\Math\BigDecimal $taxRate = null;
 
-    /**
-     * @var \Brick\Math\BigDecimal
-     */
-    private $taxableAmount;
+    private ?\Brick\Math\BigDecimal $taxableAmount = null;
 
-    /**
-     * @var ?\Brick\Math\BigDecimal
-     */
-    private $taxAmount;
+    private ?\Brick\Math\BigDecimal $taxAmount = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\VatCollectionMode
-     */
-    private $vatCollectionMode;
+    private ?\Condividendo\FatturaPA\Enums\VatCollectionMode $vatCollectionMode = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\Nature
-     */
-    private $nature;
+    private ?\Condividendo\FatturaPA\Enums\Nature $nature = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Enums\RegulatoryReference
-     */
-    private $regulatoryReference;
+    private ?\Condividendo\FatturaPA\Enums\RegulatoryReference $regulatoryReference = null;
 
     /**
      * @param  string|\Brick\Math\BigDecimal  $rate

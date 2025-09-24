@@ -11,10 +11,7 @@ use DOMElement;
 class StreetNumber extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $streetNumber;
+    private ?string $streetNumber = null;
 
     public function setStreetNumber(string $streetNumber): self {
         $this->streetNumber = $streetNumber;

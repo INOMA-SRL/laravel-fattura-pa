@@ -17,10 +17,7 @@ class Customer extends Tag {
      */
     private $taxableEntity;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Address
-     */
-    private $address;
+    private ?\Condividendo\FatturaPA\Tags\Address $address = null;
 
     public function __construct() {
         $this->taxableEntity = TaxableEntity::make();

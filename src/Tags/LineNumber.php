@@ -11,10 +11,7 @@ use DOMElement;
 class LineNumber extends Tag {
     use Makeable;
 
-    /**
-     * @var string
-     */
-    private $number;
+    private ?string $number = null;
 
     public function setNumber(int $number): self {
         $this->number = "{$number}";
