@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class VatTax extends Tag
-{
+class VatTax extends Tag {
     use Makeable;
 
     /**
@@ -17,10 +18,9 @@ class VatTax extends Tag
     private $percentage;
 
     /**
-     * @param \Brick\Math\BigDecimal $ratio Percentage as a ratio between [0,1]
+     * @param  \Brick\Math\BigDecimal  $ratio  Percentage as a ratio between [0,1]
      */
-    public function setRate(BigDecimal $ratio): self
-    {
+    public function setRate(BigDecimal $ratio): self {
         $this->percentage = $ratio;
 
         return $this;
@@ -29,8 +29,7 @@ class VatTax extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('AliquotaIVA', $this->percentage->multipliedBy(100));
     }
 }

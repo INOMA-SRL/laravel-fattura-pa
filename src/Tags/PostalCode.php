@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PostalCode extends Tag
-{
+class PostalCode extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class PostalCode extends Tag
      */
     private $postalCode;
 
-    public function setPostalCode(string $postalCode): self
-    {
+    public function setPostalCode(string $postalCode): self {
         $this->postalCode = $postalCode;
 
         return $this;
@@ -25,8 +25,7 @@ class PostalCode extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('CAP', $this->postalCode);
     }
 }

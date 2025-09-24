@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class ShareHolders extends Tag
-{
+class ShareHolders extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class ShareHolders extends Tag
      */
     private $shareHolders;
 
-    public function setShareHolders(string $shareHolders): self
-    {
+    public function setShareHolders(string $shareHolders): self {
         $this->shareHolders = $shareHolders;
 
         return $this;
@@ -25,8 +25,7 @@ class ShareHolders extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('SocioUnico', $this->shareHolders);
     }
 }

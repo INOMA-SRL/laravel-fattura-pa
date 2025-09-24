@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class ProvinceOrState extends Tag
-{
+class ProvinceOrState extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class ProvinceOrState extends Tag
      */
     private $provinceOrState;
 
-    public function setProvinceOrState(string $provinceOrState): self
-    {
+    public function setProvinceOrState(string $provinceOrState): self {
         $this->provinceOrState = $provinceOrState;
 
         return $this;
@@ -25,8 +25,7 @@ class ProvinceOrState extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Provincia', $this->provinceOrState);
     }
 }

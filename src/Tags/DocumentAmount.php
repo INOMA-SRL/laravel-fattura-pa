@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class DocumentAmount extends Tag
-{
+class DocumentAmount extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class DocumentAmount extends Tag
      */
     private $amount;
 
-    public function setDocumentAmount(BigDecimal $amount): self
-    {
+    public function setDocumentAmount(BigDecimal $amount): self {
         static::checkScale($amount);
 
         $this->amount = $amount;
@@ -28,8 +28,7 @@ class DocumentAmount extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('ImportoTotaleDocumento', $this->amount);
     }
 }

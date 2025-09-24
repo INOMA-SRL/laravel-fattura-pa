@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Registry extends Tag
-{
+class Registry extends Tag {
     use Makeable;
 
     /**
@@ -30,29 +31,25 @@ class Registry extends Tag
      */
     private $title;
 
-    public function setCompanyName(string $companyName): self
-    {
+    public function setCompanyName(string $companyName): self {
         $this->companyName = CompanyName::make()->setName($companyName);
 
         return $this;
     }
 
-    public function setTitle(string $title): self
-    {
+    public function setTitle(string $title): self {
         $this->title = Title::make()->setTitle($title);
 
         return $this;
     }
 
-    public function setFirstName(string $firstName): self
-    {
+    public function setFirstName(string $firstName): self {
         $this->firstName = FirstName::make()->setName($firstName);
 
         return $this;
     }
 
-    public function setLastName(string $lastName): self
-    {
+    public function setLastName(string $lastName): self {
         $this->lastName = LastName::make()->setName($lastName);
 
         return $this;
@@ -61,14 +58,13 @@ class Registry extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('Anagrafica');
 
         if ($this->companyName) {
             $e->appendChild($this->companyName->toDOMElement($dom));
         } else {
-            assert($this->firstName && $this->lastName, "Please specify either Company Name, or person information");
+            assert($this->firstName && $this->lastName, 'Please specify either Company Name, or person information');
 
             if ($this->title) {
                 $e->appendChild($this->title->toDOMElement($dom));

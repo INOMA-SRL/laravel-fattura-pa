@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\PaymentCondition as PaymentConditionEnum;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentData extends Tag
-{
+class PaymentData extends Tag {
     use Makeable;
 
     /**
@@ -21,15 +22,13 @@ class PaymentData extends Tag
      */
     private $paymentDetail;
 
-    public function setPaymentDetail(PaymentDetail $paymentDetail): self
-    {
+    public function setPaymentDetail(PaymentDetail $paymentDetail): self {
         $this->paymentDetail = $paymentDetail;
 
         return $this;
     }
 
-    public function setPaymentCondition(PaymentConditionEnum $paymentCondition): self
-    {
+    public function setPaymentCondition(PaymentConditionEnum $paymentCondition): self {
         $this->paymentCondition = PaymentCondition::make()->setPaymentCondition($paymentCondition);
 
         return $this;
@@ -38,8 +37,7 @@ class PaymentData extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('DatiPagamento');
 
         $e->appendChild($this->paymentCondition->toDOMElement($dom));

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Capital extends Tag
-{
+class Capital extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class Capital extends Tag
      */
     private $capital;
 
-    public function setCapital(BigDecimal $capital): self
-    {
+    public function setCapital(BigDecimal $capital): self {
         static::checkScale($capital);
 
         $this->capital = $capital;
@@ -28,8 +28,7 @@ class Capital extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('CapitaleSociale', $this->capital);
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Entities;
 
 use Condividendo\FatturaPA\Tags\Address as AddressTag;
 use Condividendo\FatturaPA\Traits\Makeable;
 
-class Address extends Entity
-{
+class Address extends Entity {
     use Makeable;
 
     /**
@@ -39,55 +40,47 @@ class Address extends Entity
      */
     private $country;
 
-    public function addressLine(string $addressLine): self
-    {
+    public function addressLine(string $addressLine): self {
         $this->addressLine = $addressLine;
 
         return $this;
     }
 
-    public function streetNumber(string $streetNumber): self
-    {
+    public function streetNumber(string $streetNumber): self {
         $this->streetNumber = $streetNumber;
 
         return $this;
     }
 
-    public function city(string $city): self
-    {
+    public function city(string $city): self {
         $this->city = $city;
 
         return $this;
     }
 
-    public function postalCode(string $postalCode): self
-    {
+    public function postalCode(string $postalCode): self {
         $this->postalCode = $postalCode;
 
         return $this;
     }
 
-    public function province(string $province): self
-    {
+    public function province(string $province): self {
         $this->provinceOrState = $province;
 
         return $this;
     }
 
-    public function country(string $country): self
-    {
+    public function country(string $country): self {
         $this->country = $country;
 
         return $this;
     }
 
-    public function getCountry(): string
-    {
+    public function getCountry(): string {
         return $this->country;
     }
 
-    public function getTag(): AddressTag
-    {
+    public function getTag(): AddressTag {
         $tag = AddressTag::make()
             ->setAddressLine($this->addressLine)
             ->setCity($this->city)

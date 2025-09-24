@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\RegulatoryReference as RegulatoryReferenceEnum;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class RegulatoryReference extends Tag
-{
+class RegulatoryReference extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class RegulatoryReference extends Tag
      */
     private $regulatoryReference;
 
-    public function setRegulatoryReference(RegulatoryReferenceEnum $regulatoryReference): self
-    {
+    public function setRegulatoryReference(RegulatoryReferenceEnum $regulatoryReference): self {
         $this->regulatoryReference = $regulatoryReference;
 
         return $this;
@@ -26,8 +26,7 @@ class RegulatoryReference extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('RiferimentoNormativo', $this->regulatoryReference->value);
     }
 }

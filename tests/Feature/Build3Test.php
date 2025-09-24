@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tests\Feature;
 
 use Condividendo\FatturaPA\Entities\Address;
@@ -20,28 +22,24 @@ use Condividendo\FatturaPA\FatturaPA;
 use Condividendo\FatturaPA\FatturaPABuilder;
 use Condividendo\FatturaPA\Tests\TestCase;
 
-class Build3Test extends TestCase
-{
-    public function test_xml(): void
-    {
+class Build3Test extends TestCase {
+    public function test_xml(): void {
         $xml = $this->build()->toXML()->asXML();
         assert(is_string($xml));
 
-        $this->assertXmlStringEqualsXmlFile(__DIR__ . '/../fixtures/3.xml', $xml);
+        $this->assertXmlStringEqualsXmlFile(__DIR__.'/../fixtures/3.xml', $xml);
     }
 
-    public function test_schema(): void
-    {
+    public function test_schema(): void {
         $dom = $this->build()->toDOM();
 
         $this->assertTrue(
-            $dom->schemaValidate(__DIR__ . "/../fixtures/Schema_VFPR12.xsd"),
-            "XML not compliant to invoice schema!"
+            $dom->schemaValidate(__DIR__.'/../fixtures/Schema_VFPR12.xsd'),
+            'XML not compliant to invoice schema!'
         );
     }
 
-    private function build(): FatturaPABuilder
-    {
+    private function build(): FatturaPABuilder {
         return FatturaPA::build()
             ->senderId('IT', '0123456789')
             ->transmissionSequence('1')
@@ -60,13 +58,13 @@ class Build3Test extends TestCase
                             ->province('MI')
                             ->country('IT')
                     )
-                    ->REANumber("12123")
-                    ->REAOfficeCode("MI")
+                    ->REANumber('12123')
+                    ->REAOfficeCode('MI')
                     ->REAShareHolders(ShareHolder::SM())
                     ->REACapital('11111.00')
                     ->REALiquidationStatus(LiquidationStatus::LN())
                     ->taxRegime(TaxRegime::RF01())
-                    ->contactsEmail("fiscale@condividendo.eu")
+                    ->contactsEmail('fiscale@condividendo.eu')
             )
             ->customer(
                 Customer::make()
@@ -109,7 +107,7 @@ class Build3Test extends TestCase
                     ])
                     ->paymentMethod(PaymentMethod::MP21())
                     ->paymentAmount('12.20')
-                    ->paymentExpirationDate("2022-10-28")
+                    ->paymentExpirationDate('2022-10-28')
                     ->paymentCondition(PaymentCondition::TP02())
             );
     }

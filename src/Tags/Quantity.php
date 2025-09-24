@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Quantity extends Tag
-{
+class Quantity extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class Quantity extends Tag
      */
     private $quantity;
 
-    public function setQuantity(BigDecimal $qty): self
-    {
+    public function setQuantity(BigDecimal $qty): self {
         $this->quantity = $qty;
 
         return $this;
@@ -26,8 +26,7 @@ class Quantity extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Quantita', $this->quantity);
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Contracts;
 
 use DOMDocument;
 use DOMElement;
 
-interface Tag extends Makeable
-{
+interface Tag extends Makeable {
     public function toDOMElement(DOMDocument $dom): DOMElement;
 }

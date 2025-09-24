@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\TransmissionFormat;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class EInvoice extends Tag
-{
+class EInvoice extends Tag {
     use Makeable;
 
     /**
@@ -26,22 +27,19 @@ class EInvoice extends Tag
      */
     private $bodies = [];
 
-    public function setTransmissionFormat(TransmissionFormat $format): self
-    {
+    public function setTransmissionFormat(TransmissionFormat $format): self {
         $this->format = $format;
 
         return $this;
     }
 
-    public function setHeader(Header $header): self
-    {
+    public function setHeader(Header $header): self {
         $this->header = $header;
 
         return $this;
     }
 
-    public function addBody(Body $body): self
-    {
+    public function addBody(Body $body): self {
         $this->bodies[] = $body;
 
         return $this;
@@ -50,8 +48,7 @@ class EInvoice extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElementNS(
             'http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2',
             'q1:FatturaElettronica'

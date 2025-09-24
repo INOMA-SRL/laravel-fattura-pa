@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class LineNumber extends Tag
-{
+class LineNumber extends Tag {
     use Makeable;
 
     /**
@@ -15,9 +16,8 @@ class LineNumber extends Tag
      */
     private $number;
 
-    public function setNumber(int $number): self
-    {
-        $this->number = "$number";
+    public function setNumber(int $number): self {
+        $this->number = "{$number}";
 
         return $this;
     }
@@ -25,8 +25,7 @@ class LineNumber extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('NumeroLinea', $this->number);
     }
 }

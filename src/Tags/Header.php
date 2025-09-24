@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Header extends Tag
-{
+class Header extends Tag {
     use Makeable;
 
     /**
@@ -25,22 +26,19 @@ class Header extends Tag
      */
     private $customer;
 
-    public function setTransmissionData(TransmissionData $data): self
-    {
+    public function setTransmissionData(TransmissionData $data): self {
         $this->transmissionData = $data;
 
         return $this;
     }
 
-    public function setSupplier(Supplier $supplier): self
-    {
+    public function setSupplier(Supplier $supplier): self {
         $this->supplier = $supplier;
 
         return $this;
     }
 
-    public function setCustomer(Customer $customer): self
-    {
+    public function setCustomer(Customer $customer): self {
         $this->customer = $customer;
 
         return $this;
@@ -49,8 +47,7 @@ class Header extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('FatturaElettronicaHeader');
 
         $e->appendChild($this->transmissionData->toDOMElement($dom));

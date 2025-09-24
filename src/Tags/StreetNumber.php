@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class StreetNumber extends Tag
-{
+class StreetNumber extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class StreetNumber extends Tag
      */
     private $streetNumber;
 
-    public function setStreetNumber(string $streetNumber): self
-    {
+    public function setStreetNumber(string $streetNumber): self {
         $this->streetNumber = $streetNumber;
 
         return $this;
@@ -25,8 +25,7 @@ class StreetNumber extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('NumeroCivico', $this->streetNumber);
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class AddressLine extends Tag
-{
+class AddressLine extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class AddressLine extends Tag
      */
     private $value;
 
-    public function setAddressLine(string $value): self
-    {
+    public function setAddressLine(string $value): self {
         $this->value = $value;
 
         return $this;
@@ -25,8 +25,7 @@ class AddressLine extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Indirizzo', $this->value);
     }
 }

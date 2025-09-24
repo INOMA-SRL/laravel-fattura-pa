@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\TransmissionFormat as TransmissionFormatEnum;
@@ -10,8 +12,7 @@ use DOMElement;
 /**
  * FormatoTrasmissione
  */
-class TransmissionFormat extends Tag
-{
+class TransmissionFormat extends Tag {
     use Makeable;
 
     /**
@@ -19,8 +20,7 @@ class TransmissionFormat extends Tag
      */
     private $format;
 
-    public function setFormat(TransmissionFormatEnum $format): self
-    {
+    public function setFormat(TransmissionFormatEnum $format): self {
         $this->format = $format;
 
         return $this;
@@ -29,8 +29,7 @@ class TransmissionFormat extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('FormatoTrasmissione', $this->format->value);
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class GoodsServicesData extends Tag
-{
+class GoodsServicesData extends Tag {
     use Makeable;
 
     /**
@@ -21,10 +22,9 @@ class GoodsServicesData extends Tag
     private $summaryItems;
 
     /**
-     * @param array<int, \Condividendo\FatturaPA\Tags\Item> $items
+     * @param  array<int, \Condividendo\FatturaPA\Tags\Item>  $items
      */
-    public function setItems(array $items): self
-    {
+    public function setItems(array $items): self {
         foreach ($items as $item) {
             $this->addItem($item);
         }
@@ -32,8 +32,7 @@ class GoodsServicesData extends Tag
         return $this;
     }
 
-    public function addItem(Item $item): self
-    {
+    public function addItem(Item $item): self {
         $this->lineItems[] = $item;
         $item->setLineNumber(count($this->lineItems));
 
@@ -41,10 +40,9 @@ class GoodsServicesData extends Tag
     }
 
     /**
-     * @param array<int, \Condividendo\FatturaPA\Tags\SummaryItem> $summaryItems
+     * @param  array<int, \Condividendo\FatturaPA\Tags\SummaryItem>  $summaryItems
      */
-    public function setSummaryItems(array $summaryItems): self
-    {
+    public function setSummaryItems(array $summaryItems): self {
         $this->summaryItems = $summaryItems;
 
         return $this;
@@ -53,8 +51,7 @@ class GoodsServicesData extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('DatiBeniServizi');
 
         foreach ($this->lineItems as $item) {

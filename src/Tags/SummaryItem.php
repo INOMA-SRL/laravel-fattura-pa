@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -10,8 +12,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class SummaryItem extends Tag
-{
+class SummaryItem extends Tag {
     use Makeable;
 
     /**
@@ -44,43 +45,37 @@ class SummaryItem extends Tag
      */
     private $regulatoryReference;
 
-    public function setTaxRate(BigDecimal $rate): self
-    {
+    public function setTaxRate(BigDecimal $rate): self {
         $this->vatTax = VatTax::make()->setRate($rate);
 
         return $this;
     }
 
-    public function setTaxableAmount(BigDecimal $amount): self
-    {
+    public function setTaxableAmount(BigDecimal $amount): self {
         $this->taxableAmount = TaxableAmount::make()->setAmount($amount);
 
         return $this;
     }
 
-    public function setTaxAmount(BigDecimal $amount): self
-    {
+    public function setTaxAmount(BigDecimal $amount): self {
         $this->duty = Duty::make()->setDuty($amount);
 
         return $this;
     }
 
-    public function setNature(NatureEnum $nature): self
-    {
+    public function setNature(NatureEnum $nature): self {
         $this->nature = Nature::make()->setNature($nature);
 
         return $this;
     }
 
-    public function setRegulatoryReference(RegulatoryReferenceEnum $ref): self
-    {
+    public function setRegulatoryReference(RegulatoryReferenceEnum $ref): self {
         $this->regulatoryReference = RegulatoryReference::make()->setRegulatoryReference($ref);
 
         return $this;
     }
 
-    public function setVatCollectionMode(VatCollectionModeEnum $collectionMode): self
-    {
+    public function setVatCollectionMode(VatCollectionModeEnum $collectionMode): self {
         $this->vatCollectionMode = VatCollectionMode::make()->setVatCollectionMode($collectionMode);
 
         return $this;
@@ -89,8 +84,7 @@ class SummaryItem extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('DatiRiepilogo');
 
         $e->appendChild($this->vatTax->toDOMElement($dom));

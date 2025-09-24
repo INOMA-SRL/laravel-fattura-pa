@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class CompanyName extends Tag
-{
+class CompanyName extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class CompanyName extends Tag
      */
     private $name;
 
-    public function setName(string $name): self
-    {
+    public function setName(string $name): self {
         $this->name = $name;
 
         return $this;
@@ -25,8 +25,7 @@ class CompanyName extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Denominazione', $this->name);
     }
 }

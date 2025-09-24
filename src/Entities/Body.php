@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Entities;
 
 use Condividendo\FatturaPA\Enums\PaymentCondition;
@@ -14,8 +16,7 @@ use Condividendo\FatturaPA\Traits\UsesDecimal;
 use Illuminate\Support\Carbon;
 use RuntimeException;
 
-class Body extends Entity
-{
+class Body extends Entity {
     use Makeable;
     use UsesDate;
     use UsesDecimal;
@@ -80,114 +81,101 @@ class Body extends Entity
      */
     private $summaryItems;
 
-    public function type(Type $type): self
-    {
+    public function type(Type $type): self {
         $this->type = $type;
 
         return $this;
     }
 
-    public function currency(string $currency): self
-    {
+    public function currency(string $currency): self {
         $this->currency = $currency;
 
         return $this;
     }
 
     /**
-     * @param string|\Illuminate\Support\Carbon $date
+     * @param  string|\Illuminate\Support\Carbon  $date
      * @return $this
      */
-    public function date($date): self
-    {
+    public function date($date): self {
         $this->date = static::makeDate($date);
 
         return $this;
     }
 
     /**
-     * @param string|\Brick\Math\BigDecimal $amount
+     * @param  string|\Brick\Math\BigDecimal  $amount
      * @return $this
      */
-    public function documentAmount($amount): self
-    {
+    public function documentAmount($amount): self {
         $this->amount = static::makeDecimal($amount);
 
         return $this;
     }
 
-    public function documentDescription(string $description): self
-    {
+    public function documentDescription(string $description): self {
         $this->description = $description;
 
         return $this;
     }
 
-    public function number(string $number): self
-    {
+    public function number(string $number): self {
         $this->number = $number;
 
         return $this;
     }
 
     /**
-     * @param array<int, \Condividendo\FatturaPA\Entities\Item> $items
+     * @param  array<int, \Condividendo\FatturaPA\Entities\Item>  $items
      */
-    public function items(array $items): self
-    {
+    public function items(array $items): self {
         $this->items = $items;
 
         return $this;
     }
 
     /**
-     * @param array<int, \Condividendo\FatturaPA\Entities\SummaryItem> $items
+     * @param  array<int, \Condividendo\FatturaPA\Entities\SummaryItem>  $items
      */
-    public function summaryItems(array $items): self
-    {
+    public function summaryItems(array $items): self {
         $this->summaryItems = $items;
 
         return $this;
     }
 
-    public function paymentMethod(PaymentMethod $paymentMethod): self
-    {
+    public function paymentMethod(PaymentMethod $paymentMethod): self {
         $this->paymentMethod = $paymentMethod;
 
         return $this;
     }
 
     /**
-     * @param string|\Illuminate\Support\Carbon $date
+     * @param  string|\Illuminate\Support\Carbon  $date
      * @return $this
      */
-    public function paymentExpirationDate($date): self
-    {
+    public function paymentExpirationDate($date): self {
         $this->paymentExpirationDate = static::makeDate($date);
 
         return $this;
     }
 
     /**
-     * @param string|\Brick\Math\BigDecimal $amount
+     * @param  string|\Brick\Math\BigDecimal  $amount
      * @return $this
      */
-    public function paymentAmount($amount): self
-    {
+    public function paymentAmount($amount): self {
         $this->paymentAmount = static::makeDecimal($amount);
 
         return $this;
     }
 
-    public function paymentCondition(PaymentCondition $paymentCondition): self
-    {
+    public function paymentCondition(PaymentCondition $paymentCondition): self {
         $this->paymentCondition = $paymentCondition;
 
         return $this;
     }
 
-    public function getTag(): BodyTag
-    {
+    public function getTag(): BodyTag {
         $items = [];
         $summaryItems = [];
 
@@ -224,13 +212,12 @@ class Body extends Entity
         return $body;
     }
 
-    private function getPaymentDataTag(): ?PaymentDataTag
-    {
-        if (!$this->paymentCondition) {
+    private function getPaymentDataTag(): ?PaymentDataTag {
+        if (! $this->paymentCondition) {
             return null;
         }
 
-        if (!$this->paymentMethod || !$this->paymentAmount) {
+        if (! $this->paymentMethod || ! $this->paymentAmount) {
             throw new RuntimeException("'paymentMethod' and 'paymentAmount' cannot be null!");
         }
 

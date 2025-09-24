@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\Type;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class DocumentType extends Tag
-{
+class DocumentType extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class DocumentType extends Tag
      */
     private $type;
 
-    public function setType(Type $type): self
-    {
+    public function setType(Type $type): self {
         $this->type = $type;
 
         return $this;
@@ -26,8 +26,7 @@ class DocumentType extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('TipoDocumento', $this->type->value);
     }
 }

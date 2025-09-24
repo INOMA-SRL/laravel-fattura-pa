@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Entities;
 
 use Brick\Math\BigDecimal;
@@ -12,8 +14,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use Condividendo\FatturaPA\Traits\UsesDecimal;
 use RuntimeException;
 
-class SummaryItem extends Entity
-{
+class SummaryItem extends Entity {
     use Makeable;
     use UsesDecimal;
 
@@ -48,61 +49,54 @@ class SummaryItem extends Entity
     private $regulatoryReference;
 
     /**
-     * @param string|\Brick\Math\BigDecimal $rate
+     * @param  string|\Brick\Math\BigDecimal  $rate
      * @return $this
      */
-    public function taxRate($rate): self
-    {
+    public function taxRate($rate): self {
         $this->taxRate = static::makeDecimal($rate);
 
         return $this;
     }
 
     /**
-     * @param string|\Brick\Math\BigDecimal $amount
+     * @param  string|\Brick\Math\BigDecimal  $amount
      * @return $this
      */
-    public function taxableAmount($amount): self
-    {
+    public function taxableAmount($amount): self {
         $this->taxableAmount = static::makeDecimal($amount);
 
         return $this;
     }
 
     /**
-     * @param string|\Brick\Math\BigDecimal $amount
+     * @param  string|\Brick\Math\BigDecimal  $amount
      * @return $this
      */
-    public function taxAmount($amount): self
-    {
+    public function taxAmount($amount): self {
         $this->taxAmount = static::makeDecimal($amount);
 
         return $this;
     }
 
-    public function nature(Nature $nature): self
-    {
+    public function nature(Nature $nature): self {
         $this->nature = $nature;
 
         return $this;
     }
 
-    public function regulatoryReference(RegulatoryReference $ref): self
-    {
+    public function regulatoryReference(RegulatoryReference $ref): self {
         $this->regulatoryReference = $ref;
 
         return $this;
     }
 
-    public function vatCollectionMode(VatCollectionMode $collectionMode): self
-    {
+    public function vatCollectionMode(VatCollectionMode $collectionMode): self {
         $this->vatCollectionMode = $collectionMode;
 
         return $this;
     }
 
-    public function getTag(): SummaryItemTag
-    {
+    public function getTag(): SummaryItemTag {
         $tag = SummaryItemTag::make()
             ->setTaxRate($this->taxRate)
             ->setTaxableAmount($this->taxableAmount)
@@ -113,8 +107,8 @@ class SummaryItem extends Entity
         }
 
         if ($this->nature) {
-            if (!$this->regulatoryReference) {
-                throw new RuntimeException("Regulatory Reference must be set if Nature is provided");
+            if (! $this->regulatoryReference) {
+                throw new RuntimeException('Regulatory Reference must be set if Nature is provided');
             }
 
             $tag->setNature($this->nature);
@@ -124,8 +118,7 @@ class SummaryItem extends Entity
         return $tag;
     }
 
-    private function calculateTaxAmount(): BigDecimal
-    {
+    private function calculateTaxAmount(): BigDecimal {
         return $this->taxableAmount->multipliedBy($this->taxRate)->toScale(2, RoundingMode::HALF_UP);
     }
 }

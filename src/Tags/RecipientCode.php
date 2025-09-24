@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class RecipientCode extends Tag
-{
+class RecipientCode extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class RecipientCode extends Tag
      */
     private $code;
 
-    public function setCode(string $code): self
-    {
+    public function setCode(string $code): self {
         $this->code = $code;
 
         return $this;
@@ -25,8 +25,7 @@ class RecipientCode extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('CodiceDestinatario', $this->code);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -9,8 +11,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class REARegistration extends Tag
-{
+class REARegistration extends Tag {
     use Makeable;
 
     /**
@@ -38,36 +39,31 @@ class REARegistration extends Tag
      */
     private $liquidationStatus;
 
-    public function setOfficeCode(string $officeCode): self
-    {
+    public function setOfficeCode(string $officeCode): self {
         $this->officeCode = OfficeCode::make()->setOfficeCode($officeCode);
 
         return $this;
     }
 
-    public function setREANumber(string $reaNumber): self
-    {
+    public function setREANumber(string $reaNumber): self {
         $this->reaNumber = REANumber::make()->setREANumber($reaNumber);
 
         return $this;
     }
 
-    public function setCapital(BigDecimal $capital): self
-    {
+    public function setCapital(BigDecimal $capital): self {
         $this->capital = Capital::make()->setCapital($capital);
 
         return $this;
     }
 
-    public function setShareHolders(ShareHolder $shareHolders): self
-    {
+    public function setShareHolders(ShareHolder $shareHolders): self {
         $this->shareHolders = ShareHolders::make()->setShareHolders($shareHolders);
 
         return $this;
     }
 
-    public function setLiquidationStatus(LiquidationStatusEnum $liquidationStatus): self
-    {
+    public function setLiquidationStatus(LiquidationStatusEnum $liquidationStatus): self {
         $this->liquidationStatus = LiquidationStatus::make()->setLiquidationStatus($liquidationStatus);
 
         return $this;
@@ -76,8 +72,7 @@ class REARegistration extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('IscrizioneREA');
 
         $e->appendChild($this->officeCode->toDOMElement($dom));

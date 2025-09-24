@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class REANumber extends Tag
-{
+class REANumber extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class REANumber extends Tag
      */
     private $number;
 
-    public function setREANumber(string $number): self
-    {
+    public function setREANumber(string $number): self {
         $this->number = $number;
 
         return $this;
@@ -25,8 +25,7 @@ class REANumber extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('NumeroREA', $this->number);
     }
 }

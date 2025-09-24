@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Entities;
 
 use Condividendo\FatturaPA\Enums\TaxRegime;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Tags\Customer as CustomerTag;
 use Condividendo\FatturaPA\Traits\HasVatNumber;
 use Condividendo\FatturaPA\Traits\Makeable;
 
-class Customer extends Entity
-{
+class Customer extends Entity {
     use HasVatNumber;
     use Makeable;
 
@@ -57,70 +58,60 @@ class Customer extends Entity
      */
     private $address;
 
-    public function companyName(string $companyName): self
-    {
+    public function companyName(string $companyName): self {
         $this->companyName = $companyName;
 
         return $this;
     }
 
-    public function vatNumber(string $vatNumber, ?string $countryId = null): self
-    {
+    public function vatNumber(string $vatNumber, ?string $countryId = null): self {
         $this->vatCountryId = static::parseVatNumberCountryId($vatNumber, $countryId);
         $this->vatNumber = static::parseVatNumber($vatNumber, $countryId);
 
         return $this;
     }
 
-    public function fiscalCode(string $fiscalCode): self
-    {
+    public function fiscalCode(string $fiscalCode): self {
         $this->fiscalCode = $fiscalCode;
 
         return $this;
     }
 
-    public function title(string $title): self
-    {
+    public function title(string $title): self {
         $this->title = $title;
 
         return $this;
     }
 
-    public function firstName(string $firstName): self
-    {
+    public function firstName(string $firstName): self {
         $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function lastName(string $lastName): self
-    {
+    public function lastName(string $lastName): self {
         $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function taxRegime(TaxRegime $taxRegime): self
-    {
+    public function taxRegime(TaxRegime $taxRegime): self {
         $this->taxRegime = $taxRegime;
 
         return $this;
     }
 
-    public function address(Address $address): self
-    {
+    public function address(Address $address): self {
         $this->address = $address;
 
         return $this;
     }
 
-    public function getAddress(): Address
-    {
+    public function getAddress(): Address {
         return $this->address;
     }
 
-    public function getTag(): CustomerTag
-    {
+    public function getTag(): CustomerTag {
         $tag = CustomerTag::make()
             ->setAddress($this->address->getTag());
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\VatCollectionMode as VatCollectionModeEnum;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class VatCollectionMode extends Tag
-{
+class VatCollectionMode extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class VatCollectionMode extends Tag
      */
     private $collectionMode;
 
-    public function setVatCollectionMode(VatCollectionModeEnum $collectionMode): self
-    {
+    public function setVatCollectionMode(VatCollectionModeEnum $collectionMode): self {
         $this->collectionMode = $collectionMode;
 
         return $this;
@@ -26,8 +26,7 @@ class VatCollectionMode extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('EsigibilitaIVA', $this->collectionMode->value);
     }
 }

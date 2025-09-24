@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class City extends Tag
-{
+class City extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class City extends Tag
      */
     private $city;
 
-    public function setCity(string $city): self
-    {
+    public function setCity(string $city): self {
         $this->city = $city;
 
         return $this;
@@ -25,8 +25,7 @@ class City extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Comune', $this->city);
     }
 }

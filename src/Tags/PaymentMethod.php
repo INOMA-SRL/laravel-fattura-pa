@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\PaymentMethod as PaymentMethodEnum;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentMethod extends Tag
-{
+class PaymentMethod extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class PaymentMethod extends Tag
      */
     private $method;
 
-    public function setPaymentMethod(PaymentMethodEnum $method): self
-    {
+    public function setPaymentMethod(PaymentMethodEnum $method): self {
         $this->method = $method;
 
         return $this;
@@ -26,8 +26,7 @@ class PaymentMethod extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('ModalitaPagamento', $this->method->value);
     }
 }

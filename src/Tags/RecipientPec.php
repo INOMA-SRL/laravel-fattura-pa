@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class RecipientPec extends Tag
-{
+class RecipientPec extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class RecipientPec extends Tag
      */
     private $pec;
 
-    public function setPec(string $pec): self
-    {
+    public function setPec(string $pec): self {
         $this->pec = $pec;
 
         return $this;
@@ -25,8 +25,7 @@ class RecipientPec extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('PECDestinatario', $this->pec);
     }
 }

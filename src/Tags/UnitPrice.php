@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class UnitPrice extends Tag
-{
+class UnitPrice extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class UnitPrice extends Tag
      */
     private $unitPrice;
 
-    public function setUnitPrice(BigDecimal $unitPrice): self
-    {
+    public function setUnitPrice(BigDecimal $unitPrice): self {
         static::checkScale($unitPrice, 2, 8);
 
         $this->unitPrice = $unitPrice;
@@ -28,8 +28,7 @@ class UnitPrice extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('PrezzoUnitario', $this->unitPrice);
     }
 }

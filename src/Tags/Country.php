@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Country extends Tag
-{
+class Country extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class Country extends Tag
      */
     private $country;
 
-    public function setCountry(string $country): self
-    {
+    public function setCountry(string $country): self {
         $this->country = $country;
 
         return $this;
@@ -25,8 +25,7 @@ class Country extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Nazione', $this->country);
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class VatNumber extends Tag
-{
+class VatNumber extends Tag {
     use Makeable;
 
     /**
@@ -20,15 +21,13 @@ class VatNumber extends Tag
      */
     private $codeId;
 
-    public function setCountryId(CountryId $id): self
-    {
+    public function setCountryId(CountryId $id): self {
         $this->countryId = $id;
 
         return $this;
     }
 
-    public function setCodeId(CodeId $id): self
-    {
+    public function setCodeId(CodeId $id): self {
         $this->codeId = $id;
 
         return $this;
@@ -37,8 +36,7 @@ class VatNumber extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('IdFiscaleIVA');
 
         $e->appendChild($this->countryId->toDOMElement($dom));

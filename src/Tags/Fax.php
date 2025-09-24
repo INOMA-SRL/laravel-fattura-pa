@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Fax extends Tag
-{
+class Fax extends Tag {
     use Makeable;
 
     /**
@@ -15,8 +16,7 @@ class Fax extends Tag
      */
     private $fax;
 
-    public function setFax(string $fax): self
-    {
+    public function setFax(string $fax): self {
         $this->fax = $fax;
 
         return $this;
@@ -25,8 +25,7 @@ class Fax extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Fax', $this->fax);
     }
 }

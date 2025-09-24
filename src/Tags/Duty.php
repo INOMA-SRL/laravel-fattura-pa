@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Duty extends Tag
-{
+class Duty extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class Duty extends Tag
      */
     private $duty;
 
-    public function setDuty(BigDecimal $duty): self
-    {
+    public function setDuty(BigDecimal $duty): self {
         static::checkScale($duty);
 
         $this->duty = $duty;
@@ -28,8 +28,7 @@ class Duty extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Imposta', $this->duty);
     }
 }

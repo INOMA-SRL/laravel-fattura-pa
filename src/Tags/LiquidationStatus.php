@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\LiquidationStatus as LiquidationStatusEnum;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class LiquidationStatus extends Tag
-{
+class LiquidationStatus extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class LiquidationStatus extends Tag
      */
     private $status;
 
-    public function setLiquidationStatus(LiquidationStatusEnum $status): self
-    {
+    public function setLiquidationStatus(LiquidationStatusEnum $status): self {
         $this->status = $status;
 
         return $this;
@@ -26,8 +26,7 @@ class LiquidationStatus extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('StatoLiquidazione', $this->status->value);
     }
 }

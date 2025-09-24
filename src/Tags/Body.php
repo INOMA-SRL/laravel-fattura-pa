@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -9,8 +11,7 @@ use DOMDocument;
 use DOMElement;
 use Illuminate\Support\Carbon;
 
-class Body extends Tag
-{
+class Body extends Tag {
     use Makeable;
 
     /**
@@ -28,90 +29,78 @@ class Body extends Tag
      */
     private $paymentData = null;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->generalData = GeneralData::make();
         $this->goodsServicesData = GoodsServicesData::make();
     }
 
-    public function setType(Type $type): self
-    {
+    public function setType(Type $type): self {
         $this->generalData->setType($type);
 
         return $this;
     }
 
-    public function setCurrency(string $currency): self
-    {
+    public function setCurrency(string $currency): self {
         $this->generalData->setCurrency($currency);
 
         return $this;
     }
 
-    public function setDate(Carbon $date): self
-    {
+    public function setDate(Carbon $date): self {
         $this->generalData->setDate($date);
 
         return $this;
     }
 
-    public function setDocumentAmount(BigDecimal $amount): self
-    {
+    public function setDocumentAmount(BigDecimal $amount): self {
         $this->generalData->setDocumentAmount($amount);
 
         return $this;
     }
 
-    public function setDocumentDescription(string $description): self
-    {
+    public function setDocumentDescription(string $description): self {
         $this->generalData->setDocumentDescription($description);
 
         return $this;
     }
 
-    public function setNumber(string $number): self
-    {
+    public function setNumber(string $number): self {
         $this->generalData->setDocumentNumber($number);
 
         return $this;
     }
 
     /**
-     * @param array<int, \Condividendo\FatturaPA\Tags\Item> $items
+     * @param  array<int, \Condividendo\FatturaPA\Tags\Item>  $items
      */
-    public function setItems(array $items): self
-    {
+    public function setItems(array $items): self {
         $this->goodsServicesData->setItems($items);
 
         return $this;
     }
 
     /**
-     * @param array<int, \Condividendo\FatturaPA\Tags\SummaryItem> $items
+     * @param  array<int, \Condividendo\FatturaPA\Tags\SummaryItem>  $items
      */
-    public function setSummaryItems(array $items): self
-    {
+    public function setSummaryItems(array $items): self {
         $this->goodsServicesData->setSummaryItems($items);
 
         return $this;
     }
 
-    public function setGeneralData(GeneralData $generalData): self
-    {
+    public function setGeneralData(GeneralData $generalData): self {
         $this->generalData = $generalData;
 
         return $this;
     }
 
-    public function setGoodsServicesData(GoodsServicesData $gsData): self
-    {
+    public function setGoodsServicesData(GoodsServicesData $gsData): self {
         $this->goodsServicesData = $gsData;
 
         return $this;
     }
 
-    public function setPaymentData(PaymentData $paymentData): self
-    {
+    public function setPaymentData(PaymentData $paymentData): self {
         $this->paymentData = $paymentData;
 
         return $this;
@@ -120,8 +109,7 @@ class Body extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('FatturaElettronicaBody');
 
         $e->appendChild($this->generalData->toDOMElement($dom));

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
@@ -9,8 +11,7 @@ use DOMElement;
 /**
  * ProgressivoInvio
  */
-class TransmissionSequence extends Tag
-{
+class TransmissionSequence extends Tag {
     use Makeable;
 
     /**
@@ -18,8 +19,7 @@ class TransmissionSequence extends Tag
      */
     private $sequence;
 
-    public function setSequence(string $sequence): self
-    {
+    public function setSequence(string $sequence): self {
         $this->sequence = $sequence;
 
         return $this;
@@ -28,8 +28,7 @@ class TransmissionSequence extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('ProgressivoInvio', $this->sequence);
     }
 }

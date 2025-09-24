@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA;
 
 use Condividendo\FatturaPA\Entities\Body;
@@ -19,8 +21,7 @@ use Condividendo\FatturaPA\Tags\TransmitterId as TransmitterIdTag;
 use DOMDocument;
 use SimpleXMLElement;
 
-class FatturaPABuilder
-{
+class FatturaPABuilder {
     /**
      * @var \Condividendo\FatturaPA\Enums\TransmissionFormat
      */
@@ -76,79 +77,68 @@ class FatturaPABuilder
      */
     private $bodies = [];
 
-    public function transmissionFormat(TransmissionFormat $format): self
-    {
+    public function transmissionFormat(TransmissionFormat $format): self {
         $this->transmissionFormat = $format;
 
         return $this;
     }
 
-    public function senderId(string $country, string $code): self
-    {
+    public function senderId(string $country, string $code): self {
         $this->senderIdCountry = $country;
         $this->senderIdCode = $code;
 
         return $this;
     }
 
-    public function senderEmail(string $email): self
-    {
+    public function senderEmail(string $email): self {
         $this->senderEmail = $email;
 
         return $this;
     }
 
-    public function senderPhone(string $phone): self
-    {
+    public function senderPhone(string $phone): self {
         $this->senderPhone = $phone;
 
         return $this;
     }
 
-    public function transmissionSequence(string $sequence): self
-    {
+    public function transmissionSequence(string $sequence): self {
         $this->transmissionSequence = $sequence;
 
         return $this;
     }
 
-    public function recipientCode(string $code): self
-    {
+    public function recipientCode(string $code): self {
         $this->recipientCode = $code;
 
         return $this;
     }
 
-    public function recipientPec(string $pec): self
-    {
+    public function recipientPec(string $pec): self {
         $this->recipientPec = $pec;
 
         return $this;
     }
 
-    public function supplier(Supplier $supplier): self
-    {
+    public function supplier(Supplier $supplier): self {
         $this->supplier = $supplier;
 
         return $this;
     }
 
-    public function customer(Customer $customer): self
-    {
+    public function customer(Customer $customer): self {
         $this->customer = $customer;
 
         return $this;
     }
 
-    public function addBody(Body $body): self
-    {
+    public function addBody(Body $body): self {
         $this->bodies[] = $body;
 
         return $this;
     }
 
-    public function getRecipientCode(): string
-    {
+    public function getRecipientCode(): string {
         $country = $this->customer->getAddress()->getCountry();
 
         assert(
@@ -165,24 +155,21 @@ class FatturaPABuilder
             : 'XXXXXXX';
     }
 
-    public function toDOM(): DOMDocument
-    {
-        $dom = new DOMDocument();
+    public function toDOM(): DOMDocument {
+        $dom = new DOMDocument;
         $dom->appendChild($this->makeEInvoice()->toDOMElement($dom));
 
         return $dom;
     }
 
-    public function toXML(): SimpleXMLElement
-    {
+    public function toXML(): SimpleXMLElement {
         $xml = simplexml_import_dom($this->toDOM());
         assert($xml instanceof SimpleXMLElement);
 
         return $xml;
     }
 
-    private function makeEInvoice(): EInvoice
-    {
+    private function makeEInvoice(): EInvoice {
         $r = EInvoice::make()
             ->setTransmissionFormat($this->transmissionFormat)
             ->setHeader($this->makeHeader());
@@ -194,8 +181,7 @@ class FatturaPABuilder
         return $r;
     }
 
-    private function makeHeader(): HeaderTag
-    {
+    private function makeHeader(): HeaderTag {
         return HeaderTag::make()->setTransmissionData($this->makeTransmissionData())
             ->setSupplier($this->supplier->getTag())
             ->setCustomer($this->customer->getTag());
@@ -204,8 +190,7 @@ class FatturaPABuilder
     /**
      * @return array<\Condividendo\FatturaPA\Tags\Body>
      */
-    private function makeBodies(): array
-    {
+    private function makeBodies(): array {
         $b = [];
 
         foreach ($this->bodies as $body) {
@@ -215,8 +200,7 @@ class FatturaPABuilder
         return $b;
     }
 
-    private function makeTransmissionData(): TransmissionDataTag
-    {
+    private function makeTransmissionData(): TransmissionDataTag {
         return TransmissionDataTag::make()
             ->setTransmitterId($this->makeTransmitterId())
             ->setTransmissionSequence($this->makeTransmissionSequence())
@@ -226,21 +210,18 @@ class FatturaPABuilder
             ->setRecipientPec($this->makeRecipientPec());
     }
 
-    private function makeTransmitterId(): TransmitterIdTag
-    {
+    private function makeTransmitterId(): TransmitterIdTag {
         return TransmitterIdTag::make()
             ->setCountryId($this->makeSenderIdCountry())
             ->setCodeId($this->makeSenderIdCode());
     }
 
-    private function makeTransmissionSequence(): TransmissionSequenceTag
-    {
+    private function makeTransmissionSequence(): TransmissionSequenceTag {
         return TransmissionSequenceTag::make()
             ->setSequence($this->transmissionSequence);
     }
 
-    private function makeTransmitterContacts(): ?TransmitterContactsTag
-    {
+    private function makeTransmitterContacts(): ?TransmitterContactsTag {
         if ($this->senderEmail || $this->senderPhone) {
             $tag = TransmitterContactsTag::make();
 
@@ -256,25 +237,21 @@ class FatturaPABuilder
         return $tag ?? null;
     }
 
-    private function makeRecipientCode(): RecipientCodeTag
-    {
+    private function makeRecipientCode(): RecipientCodeTag {
         return RecipientCodeTag::make()->setCode($this->getRecipientCode());
     }
 
-    private function makeRecipientPec(): ?RecipientPecTag
-    {
+    private function makeRecipientPec(): ?RecipientPecTag {
         return $this->recipientPec
             ? RecipientPecTag::make()->setPec($this->recipientPec)
             : null;
     }
 
-    private function makeSenderIdCountry(): CountryIdTag
-    {
+    private function makeSenderIdCountry(): CountryIdTag {
         return CountryIdTag::make()->setId($this->senderIdCountry);
     }
 
-    private function makeSenderIdCode(): CodeIdTag
-    {
+    private function makeSenderIdCode(): CodeIdTag {
         return CodeIdTag::make()->setId($this->senderIdCode);
     }
 }

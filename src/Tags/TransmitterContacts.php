@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class TransmitterContacts extends Tag
-{
+class TransmitterContacts extends Tag {
     use Makeable;
 
     /**
@@ -20,15 +21,13 @@ class TransmitterContacts extends Tag
      */
     protected $phone;
 
-    public function setEmail(string $email): self
-    {
+    public function setEmail(string $email): self {
         $this->email = Email::make()->setEmail($email);
 
         return $this;
     }
 
-    public function setPhone(string $phone): self
-    {
+    public function setPhone(string $phone): self {
         $this->phone = Phone::make()->setPhone($phone);
 
         return $this;
@@ -37,8 +36,7 @@ class TransmitterContacts extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('ContattiTrasmittente');
 
         if ($this->phone) {

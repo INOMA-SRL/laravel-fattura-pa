@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
@@ -9,8 +11,7 @@ use DOMDocument;
 use DOMElement;
 use Illuminate\Support\Carbon;
 
-class PaymentDetail extends Tag
-{
+class PaymentDetail extends Tag {
     use Makeable;
 
     /**
@@ -28,22 +29,19 @@ class PaymentDetail extends Tag
      */
     private $amount;
 
-    public function setPaymentMethod(PaymentMethodEnum $paymentMethod): self
-    {
+    public function setPaymentMethod(PaymentMethodEnum $paymentMethod): self {
         $this->paymentMethod = PaymentMethod::make()->setPaymentMethod($paymentMethod);
 
         return $this;
     }
 
-    public function setPaymentExpirationDate(Carbon $date): self
-    {
+    public function setPaymentExpirationDate(Carbon $date): self {
         $this->paymentExpirationDate = PaymentExpirationDate::make()->setPaymentExpirationDate($date);
 
         return $this;
     }
 
-    public function setPaymentAmount(BigDecimal $amount): self
-    {
+    public function setPaymentAmount(BigDecimal $amount): self {
         $this->amount = PaymentAmount::make()->setAmount($amount);
 
         return $this;
@@ -52,8 +50,7 @@ class PaymentDetail extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('DettaglioPagamento');
 
         $e->appendChild($this->paymentMethod->toDOMElement($dom));

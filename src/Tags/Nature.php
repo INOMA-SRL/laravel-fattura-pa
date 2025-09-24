@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Enums\Nature as NatureEnum;
@@ -7,8 +9,7 @@ use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Nature extends Tag
-{
+class Nature extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class Nature extends Tag
      */
     private $nature;
 
-    public function setNature(NatureEnum $nature): self
-    {
+    public function setNature(NatureEnum $nature): self {
         $this->nature = $nature;
 
         return $this;
@@ -26,8 +26,7 @@ class Nature extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Natura', $this->nature->value);
     }
 }

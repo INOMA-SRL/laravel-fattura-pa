@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Address extends Tag
-{
+class Address extends Tag {
     use Makeable;
 
     /**
@@ -40,43 +41,37 @@ class Address extends Tag
      */
     private $country;
 
-    public function setAddressLine(string $addressLine): self
-    {
+    public function setAddressLine(string $addressLine): self {
         $this->addressLine = AddressLine::make()->setAddressLine($addressLine);
 
         return $this;
     }
 
-    public function setStreetNumber(string $streetNumber): self
-    {
+    public function setStreetNumber(string $streetNumber): self {
         $this->streetNumber = StreetNumber::make()->setStreetNumber($streetNumber);
 
         return $this;
     }
 
-    public function setCity(string $city): self
-    {
+    public function setCity(string $city): self {
         $this->city = City::make()->setCity($city);
 
         return $this;
     }
 
-    public function setPostalCode(string $postalCode): self
-    {
+    public function setPostalCode(string $postalCode): self {
         $this->postalCode = PostalCode::make()->setPostalCode($postalCode);
 
         return $this;
     }
 
-    public function setProvince(string $province): self
-    {
+    public function setProvince(string $province): self {
         $this->provinceOrState = ProvinceOrState::make()->setProvinceOrState($province);
 
         return $this;
     }
 
-    public function setCountry(string $country): self
-    {
+    public function setCountry(string $country): self {
         $this->country = Country::make()->setCountry($country);
 
         return $this;
@@ -85,8 +80,7 @@ class Address extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('Sede');
 
         $e->appendChild($this->addressLine->toDOMElement($dom));

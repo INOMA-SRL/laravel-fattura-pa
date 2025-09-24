@@ -1,18 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Traits;
 
-trait HasVatNumber
-{
-    protected static function parseVatNumber(string $vatNumber, ?string $countryId = null): string
-    {
+trait HasVatNumber {
+    protected static function parseVatNumber(string $vatNumber, ?string $countryId = null): string {
         return $countryId
             ? $vatNumber
             : substr($vatNumber, 2);
     }
 
-    protected static function parseVatNumberCountryId(string $vatNumber, ?string $countryId = null): string
-    {
+    protected static function parseVatNumberCountryId(string $vatNumber, ?string $countryId = null): string {
         return $countryId ?: substr($vatNumber, 0, 2);
     }
 }

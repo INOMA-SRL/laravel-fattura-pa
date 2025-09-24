@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Enums;
 
 use BenSampo\Enum\Enum;
 
 /**
  * @property string $value
+ *
  * @method static self MP01() Contanti
  * @method static self MP02() Assegno
  * @method static self MP03() Assegno circolare
@@ -30,29 +33,50 @@ use BenSampo\Enum\Enum;
  * @method static self MP22() Trattenute
  * @method static self MP23() PagoPA
  */
-final class PaymentMethod extends Enum
-{
+final class PaymentMethod extends Enum {
     public const MP01 = 'MP01';
+
     public const MP02 = 'MP02';
+
     public const MP03 = 'MP03';
+
     public const MP04 = 'MP04';
+
     public const MP05 = 'MP05';
+
     public const MP06 = 'MP06';
+
     public const MP07 = 'MP07';
+
     public const MP08 = 'MP08';
+
     public const MP09 = 'MP09';
+
     public const MP10 = 'MP10';
+
     public const MP11 = 'MP11';
+
     public const MP12 = 'MP12';
+
     public const MP13 = 'MP13';
+
     public const MP14 = 'MP14';
+
     public const MP15 = 'MP15';
+
     public const MP16 = 'MP16';
+
     public const MP17 = 'MP17';
+
     public const MP18 = 'MP18';
+
     public const MP19 = 'MP19';
+
     public const MP20 = 'MP20';
+
     public const MP21 = 'MP21';
+
     public const MP22 = 'MP22';
+
     public const MP23 = 'MP23';
 }

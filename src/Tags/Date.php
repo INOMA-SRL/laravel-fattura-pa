@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Condividendo\FatturaPA\Tags;
 
 use Condividendo\FatturaPA\Traits\Makeable;
@@ -7,8 +9,7 @@ use DOMDocument;
 use DOMElement;
 use Illuminate\Support\Carbon;
 
-class Date extends Tag
-{
+class Date extends Tag {
     use Makeable;
 
     /**
@@ -16,8 +17,7 @@ class Date extends Tag
      */
     private $date;
 
-    public function setDate(Carbon $date): self
-    {
+    public function setDate(Carbon $date): self {
         $this->date = $date;
 
         return $this;
@@ -26,8 +26,7 @@ class Date extends Tag
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function toDOMElement(DOMDocument $dom): DOMElement
-    {
+    public function toDOMElement(DOMDocument $dom): DOMElement {
         return $dom->createElement('Data', $this->date->toDateString());
     }
 }
