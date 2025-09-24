@@ -10,6 +10,7 @@ class ServiceProvider extends BaseServiceProvider {
     /**
      * Register any application services.
      */
+    #[\Override]
     public function register(): void {
         //
     }

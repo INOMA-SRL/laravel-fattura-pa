@@ -13,7 +13,7 @@ use BenSampo\Enum\Enum;
  * @method static self LN() la società non è in stato di liquidazione.
  */
 final class LiquidationStatus extends Enum {
-    public const LS = 'LS';
+    public const string LS = 'LS';
 
-    public const LN = 'LN';
+    public const string LN = 'LN';
 }

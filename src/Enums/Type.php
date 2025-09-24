@@ -13,15 +13,15 @@ use BenSampo\Enum\Enum;
  * @method static self TD04() Nota di credito
  */
 final class Type extends Enum {
-    public const TD01 = 'TD01';
+    public const string TD01 = 'TD01';
 
-    public const TD02 = 'TD02';
+    public const string TD02 = 'TD02';
 
-    public const TD03 = 'TD03';
+    public const string TD03 = 'TD03';
 
-    public const TD04 = 'TD04';
+    public const string TD04 = 'TD04';
 
-    public const TD05 = 'TD05';
+    public const string TD05 = 'TD05';
 
-    public const TD06 = 'TD06';
+    public const string TD06 = 'TD06';
 }

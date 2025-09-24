@@ -25,6 +25,7 @@ class Contacts extends TransmitterContacts {
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
+    #[\Override]
     public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('Contatti');
 

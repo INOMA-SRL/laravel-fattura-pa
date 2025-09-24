@@ -34,49 +34,49 @@ use BenSampo\Enum\Enum;
  * @method static self MP23() PagoPA
  */
 final class PaymentMethod extends Enum {
-    public const MP01 = 'MP01';
+    public const string MP01 = 'MP01';
 
-    public const MP02 = 'MP02';
+    public const string MP02 = 'MP02';
 
-    public const MP03 = 'MP03';
+    public const string MP03 = 'MP03';
 
-    public const MP04 = 'MP04';
+    public const string MP04 = 'MP04';
 
-    public const MP05 = 'MP05';
+    public const string MP05 = 'MP05';
 
-    public const MP06 = 'MP06';
+    public const string MP06 = 'MP06';
 
-    public const MP07 = 'MP07';
+    public const string MP07 = 'MP07';
 
-    public const MP08 = 'MP08';
+    public const string MP08 = 'MP08';
 
-    public const MP09 = 'MP09';
+    public const string MP09 = 'MP09';
 
-    public const MP10 = 'MP10';
+    public const string MP10 = 'MP10';
 
-    public const MP11 = 'MP11';
+    public const string MP11 = 'MP11';
 
-    public const MP12 = 'MP12';
+    public const string MP12 = 'MP12';
 
-    public const MP13 = 'MP13';
+    public const string MP13 = 'MP13';
 
-    public const MP14 = 'MP14';
+    public const string MP14 = 'MP14';
 
-    public const MP15 = 'MP15';
+    public const string MP15 = 'MP15';
 
-    public const MP16 = 'MP16';
+    public const string MP16 = 'MP16';
 
-    public const MP17 = 'MP17';
+    public const string MP17 = 'MP17';
 
-    public const MP18 = 'MP18';
+    public const string MP18 = 'MP18';
 
-    public const MP19 = 'MP19';
+    public const string MP19 = 'MP19';
 
-    public const MP20 = 'MP20';
+    public const string MP20 = 'MP20';
 
-    public const MP21 = 'MP21';
+    public const string MP21 = 'MP21';
 
-    public const MP22 = 'MP22';
+    public const string MP22 = 'MP22';
 
-    public const MP23 = 'MP23';
+    public const string MP23 = 'MP23';
 }

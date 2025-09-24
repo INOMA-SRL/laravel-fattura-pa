@@ -13,7 +13,7 @@ use BenSampo\Enum\Enum;
  * @method static self D() Differita
  */
 final class VatCollectionMode extends Enum {
-    public const I = 'I';
+    public const string I = 'I';
 
-    public const D = 'D';
+    public const string D = 'D';
 }

@@ -13,7 +13,7 @@ use BenSampo\Enum\Enum;
  * @method static self SM() Soci multipli
  */
 final class ShareHolder extends Enum {
-    public const SU = 'SU';
+    public const string SU = 'SU';
 
-    public const SM = 'SM';
+    public const string SM = 'SM';
 }
