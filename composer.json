@@ -1,5 +1,5 @@
 {
-    "name": "condividendo/laravel-fatturapa",
+    "name": "inoma/laravel-fattura-pa",
     "license": "MIT",
     "require": {
         "php": "^8.3",
