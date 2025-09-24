@@ -1,7 +1,6 @@
 # FatturaPA
 
-[![Latest Version](http://img.shields.io/packagist/v/condividendo/laravel-fatturapa.svg?label=Release&style=for-the-badge)](https://packagist.org/packages/condividendo/laravel-fatturapa)
-[![MIT License](https://img.shields.io/github/license/condividendo/laravel-fatturapa.svg?label=License&color=blue&style=for-the-badge)](https://github.com/condividendo/laravel-fatturapa/blob/master/LICENSE.md)
+Fork of [condividendo/laravel-fatturapa](https://github.com/condividendo/laravel-fatturapa)  
 
 This package allows you to generate the XML of Italian eInvoice (aka [FatturaPA](https://www.fatturapa.gov.it/)).
 
@@ -11,8 +10,18 @@ Useful links:
 
 ## Installation
 
+in composer.json
+```json
+"repositories": [
+    {
+        "type": "github",
+        "url": "https://github.com/INOMA-SRL/laravel-fattura-pa"
+    },
+]
+```
+
 ```shell
-composer require condividendo/laravel-fatturapa
+composer require INOMA-SRL/laravel-fattura-pa
 ```
 
 ## Usage
