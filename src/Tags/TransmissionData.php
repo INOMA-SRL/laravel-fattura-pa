@@ -16,10 +16,7 @@ class TransmissionData extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\TransmissionSequence $transmissionSequence = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TransmissionFormat
-     */
-    private $transmissionFormat;
+    private ?\Condividendo\FatturaPA\Tags\TransmissionFormat $transmissionFormat = null;
 
     private ?\Condividendo\FatturaPA\Tags\RecipientCode $recipientCode = null;
 

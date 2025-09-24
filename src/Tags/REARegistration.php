@@ -14,30 +14,15 @@ use DOMElement;
 class REARegistration extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\OfficeCode
-     */
-    private $officeCode;
+    private ?\Condividendo\FatturaPA\Tags\OfficeCode $officeCode = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\REANumber
-     */
-    private $reaNumber;
+    private ?\Condividendo\FatturaPA\Tags\REANumber $reaNumber = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\Capital
-     */
-    private $capital;
+    private ?\Condividendo\FatturaPA\Tags\Capital $capital = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\ShareHolders
-     */
-    private $shareHolders;
+    private ?\Condividendo\FatturaPA\Tags\ShareHolders $shareHolders = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\LiquidationStatus
-     */
-    private $liquidationStatus;
+    private ?\Condividendo\FatturaPA\Tags\LiquidationStatus $liquidationStatus = null;
 
     public function setOfficeCode(string $officeCode): self {
         $this->officeCode = OfficeCode::make()->setOfficeCode($officeCode);

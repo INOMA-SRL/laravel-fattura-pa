@@ -14,15 +14,9 @@ use Illuminate\Support\Carbon;
 class Body extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\GeneralData
-     */
-    private $generalData;
+    private \Condividendo\FatturaPA\Tags\GeneralData $generalData;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\GoodsServicesData
-     */
-    private $goodsServicesData;
+    private \Condividendo\FatturaPA\Tags\GoodsServicesData $goodsServicesData;
 
     private ?\Condividendo\FatturaPA\Tags\PaymentData $paymentData = null;
 

@@ -14,20 +14,11 @@ use Illuminate\Support\Carbon;
 class PaymentDetail extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\PaymentMethod
-     */
-    private $paymentMethod;
+    private ?\Condividendo\FatturaPA\Tags\PaymentMethod $paymentMethod = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\PaymentExpirationDate
-     */
-    private $paymentExpirationDate;
+    private ?\Condividendo\FatturaPA\Tags\PaymentExpirationDate $paymentExpirationDate = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\PaymentAmount
-     */
-    private $amount;
+    private ?\Condividendo\FatturaPA\Tags\PaymentAmount $amount = null;
 
     public function setPaymentMethod(PaymentMethodEnum $paymentMethod): self {
         $this->paymentMethod = PaymentMethod::make()->setPaymentMethod($paymentMethod);

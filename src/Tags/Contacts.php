@@ -11,10 +11,7 @@ use DOMElement;
 class Contacts extends TransmitterContacts {
     use Makeable;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\Fax
-     */
-    private $fax;
+    private ?\Condividendo\FatturaPA\Tags\Fax $fax = null;
 
     public function setFax(string $fax): self {
         $this->fax = Fax::make()->setFax($fax);

@@ -12,10 +12,7 @@ use DOMElement;
 class PaymentData extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\PaymentCondition
-     */
-    private $paymentCondition;
+    private ?\Condividendo\FatturaPA\Tags\PaymentCondition $paymentCondition = null;
 
     private ?\Condividendo\FatturaPA\Tags\PaymentDetail $paymentDetail = null;
 

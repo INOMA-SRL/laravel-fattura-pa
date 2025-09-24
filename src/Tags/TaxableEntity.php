@@ -12,25 +12,13 @@ use DOMElement;
 class TaxableEntity extends Tag {
     use Makeable;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\VatNumber
-     */
-    private $vatNumber;
+    private ?\Condividendo\FatturaPA\Tags\VatNumber $vatNumber = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\FiscalCode
-     */
-    private $fiscalCode;
+    private ?\Condividendo\FatturaPA\Tags\FiscalCode $fiscalCode = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Registry
-     */
-    private $registry;
+    private \Condividendo\FatturaPA\Tags\Registry $registry;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\TaxRegime
-     */
-    private $taxRegime;
+    private ?\Condividendo\FatturaPA\Tags\TaxRegime $taxRegime = null;
 
     public function __construct() {
         $this->registry = Registry::make();

@@ -12,35 +12,17 @@ use DOMElement;
 class Item extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\LineNumber
-     */
-    private $lineNumber;
+    private ?\Condividendo\FatturaPA\Tags\LineNumber $lineNumber = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Description
-     */
-    private $description;
+    private ?\Condividendo\FatturaPA\Tags\Description $description = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\Quantity
-     */
-    private $quantity;
+    private ?\Condividendo\FatturaPA\Tags\Quantity $quantity = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\UnitPrice
-     */
-    private $unitPrice;
+    private ?\Condividendo\FatturaPA\Tags\UnitPrice $unitPrice = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TotalPrice
-     */
-    private $totalPrice;
+    private ?\Condividendo\FatturaPA\Tags\TotalPrice $totalPrice = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\VatTax
-     */
-    private $vatTax;
+    private ?\Condividendo\FatturaPA\Tags\VatTax $vatTax = null;
 
     public function setLineNumber(int $lineNumber): self {
         $this->lineNumber = LineNumber::make()->setNumber($lineNumber);

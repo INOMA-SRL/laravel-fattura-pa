@@ -14,10 +14,7 @@ use Illuminate\Support\Carbon;
 class GeneralData extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\GeneralDocumentData
-     */
-    private $generalDocumentData;
+    private \Condividendo\FatturaPA\Tags\GeneralDocumentData $generalDocumentData;
 
     public function __construct() {
         $this->generalDocumentData = GeneralDocumentData::make();

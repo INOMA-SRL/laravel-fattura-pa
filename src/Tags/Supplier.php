@@ -12,10 +12,7 @@ use DOMElement;
 class Supplier extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TaxableEntity
-     */
-    private $taxableEntity;
+    private \Condividendo\FatturaPA\Tags\TaxableEntity $taxableEntity;
 
     private ?\Condividendo\FatturaPA\Tags\Address $address = null;
 

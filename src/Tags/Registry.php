@@ -11,25 +11,13 @@ use DOMElement;
 class Registry extends Tag {
     use Makeable;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\CompanyName
-     */
-    private $companyName;
+    private ?\Condividendo\FatturaPA\Tags\CompanyName $companyName = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\FirstName
-     */
-    private $firstName;
+    private ?\Condividendo\FatturaPA\Tags\FirstName $firstName = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\LastName
-     */
-    private $lastName;
+    private ?\Condividendo\FatturaPA\Tags\LastName $lastName = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\Title
-     */
-    private $title;
+    private ?\Condividendo\FatturaPA\Tags\Title $title = null;
 
     public function setCompanyName(string $companyName): self {
         $this->companyName = CompanyName::make()->setName($companyName);

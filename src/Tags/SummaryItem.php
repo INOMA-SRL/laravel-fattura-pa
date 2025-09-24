@@ -15,35 +15,17 @@ use DOMElement;
 class SummaryItem extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\VatTax
-     */
-    private $vatTax;
+    private ?\Condividendo\FatturaPA\Tags\VatTax $vatTax = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\TaxableAmount
-     */
-    private $taxableAmount;
+    private ?\Condividendo\FatturaPA\Tags\TaxableAmount $taxableAmount = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Duty
-     */
-    private $duty;
+    private ?\Condividendo\FatturaPA\Tags\Duty $duty = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\VatCollectionMode
-     */
-    private $vatCollectionMode;
+    private ?\Condividendo\FatturaPA\Tags\VatCollectionMode $vatCollectionMode = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\Nature
-     */
-    private $nature;
+    private ?\Condividendo\FatturaPA\Tags\Nature $nature = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\RegulatoryReference
-     */
-    private $regulatoryReference;
+    private ?\Condividendo\FatturaPA\Tags\RegulatoryReference $regulatoryReference = null;
 
     public function setTaxRate(BigDecimal $rate): self {
         $this->vatTax = VatTax::make()->setRate($rate);

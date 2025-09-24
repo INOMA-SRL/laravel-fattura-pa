@@ -11,35 +11,17 @@ use DOMElement;
 class Address extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\AddressLine
-     */
-    private $addressLine;
+    private ?\Condividendo\FatturaPA\Tags\AddressLine $addressLine = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\StreetNumber
-     */
-    private $streetNumber;
+    private ?\Condividendo\FatturaPA\Tags\StreetNumber $streetNumber = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\City
-     */
-    private $city;
+    private ?\Condividendo\FatturaPA\Tags\City $city = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\PostalCode
-     */
-    private $postalCode;
+    private ?\Condividendo\FatturaPA\Tags\PostalCode $postalCode = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\ProvinceOrState
-     */
-    private $provinceOrState;
+    private ?\Condividendo\FatturaPA\Tags\ProvinceOrState $provinceOrState = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Country
-     */
-    private $country;
+    private ?\Condividendo\FatturaPA\Tags\Country $country = null;
 
     public function setAddressLine(string $addressLine): self {
         $this->addressLine = AddressLine::make()->setAddressLine($addressLine);

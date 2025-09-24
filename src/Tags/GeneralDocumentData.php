@@ -14,35 +14,17 @@ use Illuminate\Support\Carbon;
 class GeneralDocumentData extends Tag {
     use Makeable;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\DocumentType
-     */
-    private $type;
+    private ?\Condividendo\FatturaPA\Tags\DocumentType $type = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Currency
-     */
-    private $currency;
+    private ?\Condividendo\FatturaPA\Tags\Currency $currency = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\Date
-     */
-    private $date;
+    private ?\Condividendo\FatturaPA\Tags\Date $date = null;
 
-    /**
-     * @var \Condividendo\FatturaPA\Tags\DocumentNumber
-     */
-    private $number;
+    private ?\Condividendo\FatturaPA\Tags\DocumentNumber $number = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\DocumentAmount
-     */
-    private $amount;
+    private ?\Condividendo\FatturaPA\Tags\DocumentAmount $amount = null;
 
-    /**
-     * @var ?\Condividendo\FatturaPA\Tags\DocumentDescription
-     */
-    private $description;
+    private ?\Condividendo\FatturaPA\Tags\DocumentDescription $description = null;
 
     public function setType(Type $type): self {
         $this->type = DocumentType::make()->setType($type);
