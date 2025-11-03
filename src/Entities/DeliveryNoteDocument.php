@@ -23,7 +23,7 @@ class DeliveryNoteDocument extends Entity {
         return $this;
     }
 
-    public function taxableAmount(DateTimeInterface|string $date): self {
+    public function date(DateTimeInterface|string $date): self {
         $this->date = \Illuminate\Support\Carbon::parse($date);
 
         return $this;
