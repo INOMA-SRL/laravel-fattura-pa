@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Condividendo\FatturaPA\Tags;
+
+use Condividendo\FatturaPA\Traits\Makeable;
+use DOMDocument;
+use DOMElement;
+use Illuminate\Support\Carbon;
+
+class DeliveryNoteDocumentDate extends Tag {
+    use Makeable;
+
+    private ?\Illuminate\Support\Carbon $date = null;
+
+    public function setDate(Carbon $date): self {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @noinspection PhpUnhandledExceptionInspection
+     */
+    public function toDOMElement(DOMDocument $dom): DOMElement {
+        return $dom->createElement('DataDDT', $this->date->toDateString());
+    }
+}

@@ -47,6 +47,11 @@ class Body extends Entity {
     private ?array $items = null;
 
     /**
+     * @var array<\Condividendo\FatturaPA\Entities\DeliveryNoteDocument>
+     */
+    private ?array $deliveryNoteDocuments = null;
+
+    /**
      * @var array<\Condividendo\FatturaPA\Entities\SummaryItem>
      */
     private ?array $summaryItems = null;
@@ -145,9 +150,19 @@ class Body extends Entity {
         return $this;
     }
 
+    /**
+     * @param  array<int, \Condividendo\FatturaPA\Entities\DeliveryNoteDocument>  $documents
+     */
+    public function deliveryNoteDocuments(array $documents): self {
+        $this->deliveryNoteDocuments = $documents;
+
+        return $this;
+    }
+
     public function getTag(): BodyTag {
         $items = [];
         $summaryItems = [];
+        $deliveryNoteDocuments = [];
 
         foreach ($this->items as $item) {
             $items[] = $item->getTag();
@@ -155,6 +170,10 @@ class Body extends Entity {
 
         foreach ($this->summaryItems as $item) {
             $summaryItems[] = $item->getTag();
+        }
+
+        foreach ($this->deliveryNoteDocuments ?? [] as $document) {
+            $deliveryNoteDocuments[] = $document->getTag();
         }
 
         $body = BodyTag::make()
@@ -177,6 +196,10 @@ class Body extends Entity {
 
         if ($paymentData) {
             $body->setPaymentData($paymentData);
+        }
+
+        if ($deliveryNoteDocuments) {
+            $body->setDeliveryNoteDocuments($deliveryNoteDocuments);
         }
 
         return $body;

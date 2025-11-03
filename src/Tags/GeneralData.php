@@ -16,6 +16,11 @@ class GeneralData extends Tag {
 
     private \Condividendo\FatturaPA\Tags\GeneralDocumentData $generalDocumentData;
 
+    /**
+     * @var array<\Condividendo\FatturaPA\Tags\DeliveryNoteDocument>
+     */
+    private ?array $deliveryNoteDocuments = null;
+
     public function __construct() {
         $this->generalDocumentData = GeneralDocumentData::make();
     }
@@ -63,12 +68,25 @@ class GeneralData extends Tag {
     }
 
     /**
+     * @param  array<\Condividendo\FatturaPA\Tags\DeliveryNoteDocument>  $deliveryNoteDocuments
+     */
+    public function setDeliveryNoteDocuments(array $deliveryNoteDocuments): self {
+        $this->deliveryNoteDocuments = $deliveryNoteDocuments;
+
+        return $this;
+    }
+
+    /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('DatiGenerali');
 
         $e->appendChild($this->generalDocumentData->toDOMElement($dom));
+
+        foreach ($this->deliveryNoteDocuments ?? [] as $deliveryNoteDocument) {
+            $e->appendChild($deliveryNoteDocument->toDOMElement($dom));
+        }
 
         return $e;
     }

@@ -98,6 +98,15 @@ class Body extends Tag {
     }
 
     /**
+     * @param  array<int, \Condividendo\FatturaPA\Tags\DeliveryNoteDocument>  $documents
+     */
+    public function setDeliveryNoteDocuments(array $documents): self {
+        $this->generalData->setDeliveryNoteDocuments($documents);
+
+        return $this;
+    }
+
+    /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
