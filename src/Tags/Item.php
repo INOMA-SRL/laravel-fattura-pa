@@ -24,6 +24,8 @@ class Item extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\VatTax $vatTax = null;
 
+    private ?\Condividendo\FatturaPA\Tags\UnitMeasure $unitMeasure = null;
+
     public function setLineNumber(int $lineNumber): self {
         $this->lineNumber = LineNumber::make()->setNumber($lineNumber);
 
@@ -60,6 +62,12 @@ class Item extends Tag {
         return $this;
     }
 
+    public function setUnitMeasure(string $unitMeasure): self {
+        $this->unitMeasure = UnitMeasure::make()->setUnitMeasure($unitMeasure);
+
+        return $this;
+    }
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
@@ -71,6 +79,10 @@ class Item extends Tag {
 
         if ($this->quantity) {
             $e->appendChild($this->quantity->toDOMElement($dom));
+        }
+
+        if ($this->unitMeasure) {
+            $e->appendChild($this->unitMeasure->toDOMElement($dom));
         }
 
         $e->appendChild($this->unitPrice->toDOMElement($dom));

@@ -25,6 +25,8 @@ class Item extends Entity {
 
     private ?\Brick\Math\BigDecimal $taxRate = null;
 
+    private ?string $unitMeasure = null;
+
     public function number(int $lineNumber): self {
         $this->lineNumber = $lineNumber;
 
@@ -77,6 +79,12 @@ class Item extends Entity {
         return $this;
     }
 
+    public function unitMeasure(string $unitMeasure): self {
+        $this->unitMeasure = $unitMeasure;
+
+        return $this;
+    }
+
     public function getTag(): ItemTag {
         $tag = ItemTag::make()
             ->setLineNumber($this->lineNumber)
@@ -87,6 +95,10 @@ class Item extends Entity {
 
         if ($this->quantity) {
             $tag->setQuantity($this->quantity);
+        }
+
+        if ($this->unitMeasure) {
+            $tag->setUnitMeasure($this->unitMeasure);
         }
 
         return $tag;
