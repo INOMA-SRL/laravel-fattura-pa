@@ -26,6 +26,11 @@ class Item extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\UnitMeasure $unitMeasure = null;
 
+    /**
+     * @var array<\Condividendo\FatturaPA\Tags\ArticleCode>
+     */
+    private ?array $articleCodes = null;
+
     public function setLineNumber(int $lineNumber): self {
         $this->lineNumber = LineNumber::make()->setNumber($lineNumber);
 
@@ -69,12 +74,26 @@ class Item extends Tag {
     }
 
     /**
+     * @param  array<\Condividendo\FatturaPA\Tags\ArticleCode>  $articleCodes
+     */
+    public function setArticleCodes(array $articleCodes): self {
+        $this->articleCodes = $articleCodes;
+
+        return $this;
+    }
+
+    /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElement('DettaglioLinee');
 
         $e->appendChild($this->lineNumber->toDOMElement($dom));
+
+        foreach ($this->articleCodes ?? [] as $articleCode) {
+            $e->appendChild($articleCode->toDOMElement($dom));
+        }
+
         $e->appendChild($this->description->toDOMElement($dom));
 
         if ($this->quantity) {
