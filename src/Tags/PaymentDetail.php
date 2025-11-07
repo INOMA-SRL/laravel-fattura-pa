@@ -20,6 +20,8 @@ class PaymentDetail extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\PaymentAmount $amount = null;
 
+    private ?\Condividendo\FatturaPA\Tags\PaymentFinancialInstitute $financialInstitute = null;
+
     public function setPaymentMethod(PaymentMethodEnum $paymentMethod): self {
         $this->paymentMethod = PaymentMethod::make()->setPaymentMethod($paymentMethod);
 
@@ -38,6 +40,12 @@ class PaymentDetail extends Tag {
         return $this;
     }
 
+    public function setFinancialInstitute(string $financialInstitute): self {
+        $this->financialInstitute = PaymentFinancialInstitute::make()->setFinancialInstitute($financialInstitute);
+
+        return $this;
+    }
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
@@ -51,6 +59,10 @@ class PaymentDetail extends Tag {
         }
 
         $e->appendChild($this->amount->toDOMElement($dom));
+
+        if ($this->financialInstitute) {
+            $e->appendChild($this->financialInstitute->toDOMElement($dom));
+        }
 
         return $e;
     }

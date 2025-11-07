@@ -41,6 +41,8 @@ class Body extends Entity {
 
     private ?\Brick\Math\BigDecimal $paymentAmount = null;
 
+    private ?string $financialInstitute = null;
+
     /**
      * @var array<\Condividendo\FatturaPA\Entities\Item>
      */
@@ -150,6 +152,12 @@ class Body extends Entity {
         return $this;
     }
 
+    public function paymentFinancialInstitute(string $financialInstitute): self {
+        $this->financialInstitute = $financialInstitute;
+
+        return $this;
+    }
+
     /**
      * @param  array<int, \Condividendo\FatturaPA\Entities\DeliveryNoteDocument>  $documents
      */
@@ -220,6 +228,10 @@ class Body extends Entity {
 
         if ($this->paymentExpirationDate) {
             $detail->setPaymentExpirationDate($this->paymentExpirationDate);
+        }
+
+        if ($this->financialInstitute) {
+            $detail->setFinancialInstitute($this->financialInstitute);
         }
 
         return PaymentDataTag::make()
