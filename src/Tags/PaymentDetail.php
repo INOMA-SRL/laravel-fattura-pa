@@ -18,6 +18,8 @@ class PaymentDetail extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\PaymentExpirationDate $paymentExpirationDate = null;
 
+    private ?\Condividendo\FatturaPA\Tags\PaymentTermsReferenceDate $paymentTermsReferenceDate = null;
+
     private ?\Condividendo\FatturaPA\Tags\PaymentAmount $amount = null;
 
     private ?\Condividendo\FatturaPA\Tags\PaymentFinancialInstitute $financialInstitute = null;
@@ -34,6 +36,12 @@ class PaymentDetail extends Tag {
 
     public function setPaymentExpirationDate(Carbon $date): self {
         $this->paymentExpirationDate = PaymentExpirationDate::make()->setPaymentExpirationDate($date);
+
+        return $this;
+    }
+
+    public function setPaymentTermsReferenceDate(Carbon $date): self {
+        $this->paymentTermsReferenceDate = PaymentTermsReferenceDate::make()->setPaymentTermsReferenceDate($date);
 
         return $this;
     }
@@ -72,6 +80,10 @@ class PaymentDetail extends Tag {
 
         if ($this->paymentExpirationDate) {
             $e->appendChild($this->paymentExpirationDate->toDOMElement($dom));
+        }
+
+        if ($this->paymentTermsReferenceDate) {
+            $e->appendChild($this->paymentTermsReferenceDate->toDOMElement($dom));
         }
 
         $e->appendChild($this->amount->toDOMElement($dom));

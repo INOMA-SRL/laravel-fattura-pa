@@ -39,6 +39,8 @@ class Body extends Entity {
 
     private ?\Illuminate\Support\Carbon $paymentExpirationDate = null;
 
+    private ?\Illuminate\Support\Carbon $paymentTermsReferenceDate = null;
+
     private ?\Brick\Math\BigDecimal $paymentAmount = null;
 
     private ?string $financialInstitute = null;
@@ -136,6 +138,16 @@ class Body extends Entity {
      */
     public function paymentExpirationDate($date): self {
         $this->paymentExpirationDate = static::makeDate($date);
+
+        return $this;
+    }
+
+    /**
+     * @param  string|\Illuminate\Support\Carbon  $date
+     * @return $this
+     */
+    public function paymentTermsReferenceDate($date): self {
+        $this->paymentTermsReferenceDate = static::makeDate($date);
 
         return $this;
     }
@@ -244,6 +256,10 @@ class Body extends Entity {
 
         if ($this->paymentExpirationDate) {
             $detail->setPaymentExpirationDate($this->paymentExpirationDate);
+        }
+
+        if ($this->paymentTermsReferenceDate) {
+            $detail->setPaymentTermsReferenceDate($this->paymentTermsReferenceDate);
         }
 
         if ($this->financialInstitute) {
