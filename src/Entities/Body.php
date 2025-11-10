@@ -43,6 +43,10 @@ class Body extends Entity {
 
     private ?string $financialInstitute = null;
 
+    private ?string $abi = null;
+
+    private ?string $cab = null;
+
     /**
      * @var array<\Condividendo\FatturaPA\Entities\Item>
      */
@@ -158,6 +162,18 @@ class Body extends Entity {
         return $this;
     }
 
+    public function paymentAbi(string $abi): self {
+        $this->abi = $abi;
+
+        return $this;
+    }
+
+    public function paymentCab(string $cab): self {
+        $this->cab = $cab;
+
+        return $this;
+    }
+
     /**
      * @param  array<int, \Condividendo\FatturaPA\Entities\DeliveryNoteDocument>  $documents
      */
@@ -232,6 +248,14 @@ class Body extends Entity {
 
         if ($this->financialInstitute) {
             $detail->setFinancialInstitute($this->financialInstitute);
+        }
+
+        if ($this->abi) {
+            $detail->setAbi($this->abi);
+        }
+
+        if ($this->cab) {
+            $detail->setCab($this->cab);
         }
 
         return PaymentDataTag::make()

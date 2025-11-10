@@ -22,6 +22,10 @@ class PaymentDetail extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\PaymentFinancialInstitute $financialInstitute = null;
 
+    private ?\Condividendo\FatturaPA\Tags\PaymentAbi $abi = null;
+
+    private ?\Condividendo\FatturaPA\Tags\PaymentCab $cab = null;
+
     public function setPaymentMethod(PaymentMethodEnum $paymentMethod): self {
         $this->paymentMethod = PaymentMethod::make()->setPaymentMethod($paymentMethod);
 
@@ -46,6 +50,18 @@ class PaymentDetail extends Tag {
         return $this;
     }
 
+    public function setAbi(string $abi): self {
+        $this->abi = PaymentAbi::make()->setAbi($abi);
+
+        return $this;
+    }
+
+    public function setCab(string $cab): self {
+        $this->cab = PaymentCab::make()->setCab($cab);
+
+        return $this;
+    }
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
@@ -62,6 +78,14 @@ class PaymentDetail extends Tag {
 
         if ($this->financialInstitute) {
             $e->appendChild($this->financialInstitute->toDOMElement($dom));
+        }
+
+        if ($this->abi) {
+            $e->appendChild($this->abi->toDOMElement($dom));
+        }
+
+        if ($this->cab) {
+            $e->appendChild($this->cab->toDOMElement($dom));
         }
 
         return $e;
