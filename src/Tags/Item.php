@@ -31,6 +31,11 @@ class Item extends Tag {
      */
     private ?array $articleCodes = null;
 
+    /**
+     * @var array<\Condividendo\FatturaPA\Tags\OtherManagementData>
+     */
+    private ?array $otherManagementData = null;
+
     public function setLineNumber(int $lineNumber): self {
         $this->lineNumber = LineNumber::make()->setNumber($lineNumber);
 
@@ -83,6 +88,15 @@ class Item extends Tag {
     }
 
     /**
+     * @param  array<\Condividendo\FatturaPA\Tags\OtherManagementData>  $otherManagementData
+     */
+    public function setOtherManagementData(array $otherManagementData): self {
+        $this->otherManagementData = $otherManagementData;
+
+        return $this;
+    }
+
+    /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
@@ -102,6 +116,10 @@ class Item extends Tag {
 
         if ($this->unitMeasure) {
             $e->appendChild($this->unitMeasure->toDOMElement($dom));
+        }
+
+        foreach ($this->otherManagementData ?? [] as $otherManagementData) {
+            $e->appendChild($otherManagementData->toDOMElement($dom));
         }
 
         $e->appendChild($this->unitPrice->toDOMElement($dom));

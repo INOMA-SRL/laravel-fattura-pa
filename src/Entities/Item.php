@@ -32,6 +32,11 @@ class Item extends Entity {
      */
     private ?array $articleCodes = null;
 
+    /**
+     * @var array<\Condividendo\FatturaPA\Entities\OtherManagementData>
+     */
+    private ?array $otherManagementData = null;
+
     public function number(int $lineNumber): self {
         $this->lineNumber = $lineNumber;
 
@@ -99,6 +104,15 @@ class Item extends Entity {
         return $this;
     }
 
+    /**
+     * @param  array<\Condividendo\FatturaPA\Entities\OtherManagementData>  $otherManagementData
+     */
+    public function otherManagementData(array $otherManagementData): self {
+        $this->otherManagementData = $otherManagementData;
+
+        return $this;
+    }
+
     public function getTag(): ItemTag {
         $tag = ItemTag::make()
             ->setLineNumber($this->lineNumber)
@@ -117,6 +131,10 @@ class Item extends Entity {
 
         if ($this->articleCodes) {
             $tag->setArticleCodes(array_map(fn (\Condividendo\FatturaPA\Entities\ArticleCode $code) => $code->getTag(), $this->articleCodes));
+        }
+
+        if ($this->otherManagementData) {
+            $tag->setOtherManagementData(array_map(fn (\Condividendo\FatturaPA\Entities\OtherManagementData $otherManagementData) => $otherManagementData->getTag(), $this->otherManagementData));
         }
 
         return $tag;
