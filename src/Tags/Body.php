@@ -49,7 +49,7 @@ class Body extends Tag {
         return $this;
     }
 
-    public function setDocumentDescription(string $description): self {
+    public function setDocumentDescription(string|array $description): self {
         $this->generalData->setDocumentDescription($description);
 
         return $this;

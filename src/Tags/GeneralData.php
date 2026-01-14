@@ -49,7 +49,7 @@ class GeneralData extends Tag {
         return $this;
     }
 
-    public function setDocumentDescription(string $description): self {
+    public function setDocumentDescription(string|array $description): self {
         $this->generalDocumentData->setDocumentDescription($description);
 
         return $this;

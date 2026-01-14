@@ -26,9 +26,9 @@ class SummaryItem extends Entity {
 
     private ?\Condividendo\FatturaPA\Enums\VatCollectionMode $vatCollectionMode = null;
 
-    private ?\Condividendo\FatturaPA\Enums\Nature $nature = null;
+    private \Condividendo\FatturaPA\Enums\Nature|string|null $nature = null;
 
-    private ?\Condividendo\FatturaPA\Enums\RegulatoryReference $regulatoryReference = null;
+    private \Condividendo\FatturaPA\Enums\RegulatoryReference|string|null $regulatoryReference = null;
 
     /**
      * @param  string|\Brick\Math\BigDecimal  $rate
@@ -60,13 +60,13 @@ class SummaryItem extends Entity {
         return $this;
     }
 
-    public function nature(Nature $nature): self {
+    public function nature(Nature|string $nature): self {
         $this->nature = $nature;
 
         return $this;
     }
 
-    public function regulatoryReference(RegulatoryReference $ref): self {
+    public function regulatoryReference(RegulatoryReference|string $ref): self {
         $this->regulatoryReference = $ref;
 
         return $this;

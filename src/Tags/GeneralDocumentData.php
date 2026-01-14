@@ -24,7 +24,10 @@ class GeneralDocumentData extends Tag {
 
     private ?\Condividendo\FatturaPA\Tags\DocumentAmount $amount = null;
 
-    private ?\Condividendo\FatturaPA\Tags\DocumentDescription $description = null;
+    /**
+     * @var DocumentDescription[]
+     */
+    private array $descriptions = [];
 
     public function setType(Type $type): self {
         $this->type = DocumentType::make()->setType($type);
@@ -50,8 +53,13 @@ class GeneralDocumentData extends Tag {
         return $this;
     }
 
-    public function setDocumentDescription(string $description): self {
-        $this->description = DocumentDescription::make()->setDocumentDescription($description);
+    /**
+     * @param  string|string[]  $description
+     */
+    public function setDocumentDescription(string|array $description): self {
+        $description = is_array($description) ? $description : [$description];
+
+        $this->descriptions = array_map(fn ($desc) => DocumentDescription::make()->setDocumentDescription($desc), $description);
 
         return $this;
     }
@@ -77,8 +85,10 @@ class GeneralDocumentData extends Tag {
             $e->appendChild($this->amount->toDOMElement($dom));
         }
 
-        if ($this->description) {
-            $e->appendChild($this->description->toDOMElement($dom));
+        if ($this->descriptions) {
+            foreach ($this->descriptions as $description) {
+                $e->appendChild($description->toDOMElement($dom));
+            }
         }
 
         return $e;

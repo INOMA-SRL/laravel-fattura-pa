@@ -29,7 +29,7 @@ class Body extends Entity {
 
     private ?\Brick\Math\BigDecimal $amount = null;
 
-    private ?string $description = null;
+    private string|array|null $description = null;
 
     private ?string $number = null;
 
@@ -96,7 +96,10 @@ class Body extends Entity {
         return $this;
     }
 
-    public function documentDescription(string $description): self {
+    /**
+     * @param  string|string[]  $description
+     */
+    public function documentDescription(string|array $description): self {
         $this->description = $description;
 
         return $this;

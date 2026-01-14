@@ -12,9 +12,9 @@ use DOMElement;
 class Nature extends Tag {
     use Makeable;
 
-    private ?\Condividendo\FatturaPA\Enums\Nature $nature = null;
+    private NatureEnum|string|null $nature = null;
 
-    public function setNature(NatureEnum $nature): self {
+    public function setNature(NatureEnum|string $nature): self {
         $this->nature = $nature;
 
         return $this;
@@ -24,6 +24,12 @@ class Nature extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('Natura', $this->nature->value);
+        $value = match (true) {
+            is_null($this->nature) => '',
+            $this->nature instanceof NatureEnum => $this->nature->value,
+            \is_string($this->nature) => $this->nature,
+        };
+
+        return $dom->createElement('Natura', $value);
     }
 }

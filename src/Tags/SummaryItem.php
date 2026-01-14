@@ -45,13 +45,13 @@ class SummaryItem extends Tag {
         return $this;
     }
 
-    public function setNature(NatureEnum $nature): self {
+    public function setNature(NatureEnum|string $nature): self {
         $this->nature = Nature::make()->setNature($nature);
 
         return $this;
     }
 
-    public function setRegulatoryReference(RegulatoryReferenceEnum $ref): self {
+    public function setRegulatoryReference(RegulatoryReferenceEnum|string $ref): self {
         $this->regulatoryReference = RegulatoryReference::make()->setRegulatoryReference($ref);
 
         return $this;

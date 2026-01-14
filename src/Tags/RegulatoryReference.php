@@ -12,9 +12,9 @@ use DOMElement;
 class RegulatoryReference extends Tag {
     use Makeable;
 
-    private ?\Condividendo\FatturaPA\Enums\RegulatoryReference $regulatoryReference = null;
+    private RegulatoryReferenceEnum|string|null $regulatoryReference = null;
 
-    public function setRegulatoryReference(RegulatoryReferenceEnum $regulatoryReference): self {
+    public function setRegulatoryReference(RegulatoryReferenceEnum|string $regulatoryReference): self {
         $this->regulatoryReference = $regulatoryReference;
 
         return $this;
@@ -24,6 +24,12 @@ class RegulatoryReference extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('RiferimentoNormativo', $this->regulatoryReference->value);
+        $value = match (true) {
+            is_null($this->regulatoryReference) => '',
+            $this->regulatoryReference instanceof RegulatoryReferenceEnum => $this->regulatoryReference->value,
+            \is_string($this->regulatoryReference) => $this->regulatoryReference,
+        };
+
+        return $dom->createElement('RiferimentoNormativo', $value);
     }
 }
