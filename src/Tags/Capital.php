@@ -26,6 +26,6 @@ class Capital extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('CapitaleSociale', $this->capital);
+        return $dom->createElement('CapitaleSociale', $this->capital->__toString());
     }
 }
