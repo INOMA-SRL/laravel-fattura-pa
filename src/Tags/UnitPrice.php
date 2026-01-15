@@ -26,6 +26,6 @@ class UnitPrice extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('PrezzoUnitario', $this->unitPrice);
+        return $dom->createElement('PrezzoUnitario', $this->unitPrice->__toString());
     }
 }

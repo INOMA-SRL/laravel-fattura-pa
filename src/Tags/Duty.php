@@ -26,6 +26,6 @@ class Duty extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('Imposta', $this->duty);
+        return $dom->createElement('Imposta', $this->duty->__toString());
     }
 }
