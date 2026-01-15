@@ -23,6 +23,6 @@ class OtherManagementDataNumberReference extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('RiferimentoNumero', $this->numberReference);
+        return $dom->createElement('RiferimentoNumero', $this->numberReference->__toString());
     }
 }

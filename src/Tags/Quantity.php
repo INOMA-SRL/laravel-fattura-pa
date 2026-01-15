@@ -24,6 +24,6 @@ class Quantity extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('Quantita', $this->quantity);
+        return $dom->createElement('Quantita', $this->quantity->__toString());
     }
 }

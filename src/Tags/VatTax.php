@@ -27,6 +27,6 @@ class VatTax extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('AliquotaIVA', $this->percentage->multipliedBy(100));
+        return $dom->createElement('AliquotaIVA', $this->percentage->multipliedBy(100)->__toString());
     }
 }

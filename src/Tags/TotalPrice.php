@@ -26,6 +26,6 @@ class TotalPrice extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('PrezzoTotale', $this->totalPrice);
+        return $dom->createElement('PrezzoTotale', $this->totalPrice->__toString());
     }
 }

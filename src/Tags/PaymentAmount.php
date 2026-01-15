@@ -26,6 +26,6 @@ class PaymentAmount extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('ImportoPagamento', $this->amount);
+        return $dom->createElement('ImportoPagamento', $this->amount->__toString());
     }
 }

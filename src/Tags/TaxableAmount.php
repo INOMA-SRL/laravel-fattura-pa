@@ -26,6 +26,6 @@ class TaxableAmount extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('ImponibileImporto', $this->amount);
+        return $dom->createElement('ImponibileImporto', $this->amount->__toString());
     }
 }
