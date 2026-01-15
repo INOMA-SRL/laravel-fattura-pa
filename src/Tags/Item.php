@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Condividendo\FatturaPA\Tags;
 
 use Brick\Math\BigDecimal;
+use Condividendo\FatturaPA\Enums\Nature as NatureEnum;
 use Condividendo\FatturaPA\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -25,6 +26,8 @@ class Item extends Tag {
     private ?\Condividendo\FatturaPA\Tags\VatTax $vatTax = null;
 
     private ?\Condividendo\FatturaPA\Tags\UnitMeasure $unitMeasure = null;
+
+    private ?\Condividendo\FatturaPA\Tags\Nature $nature = null;
 
     /**
      * @var array<\Condividendo\FatturaPA\Tags\ArticleCode>
@@ -96,6 +99,12 @@ class Item extends Tag {
         return $this;
     }
 
+    public function setNature(NatureEnum|string $nature): self {
+        $this->nature = Nature::make()->setNature($nature);
+
+        return $this;
+    }
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
@@ -125,6 +134,10 @@ class Item extends Tag {
         $e->appendChild($this->unitPrice->toDOMElement($dom));
         $e->appendChild($this->totalPrice->toDOMElement($dom));
         $e->appendChild($this->vatTax->toDOMElement($dom));
+
+        if ($this->nature) {
+            $e->appendChild($this->nature->toDOMElement($dom));
+        }
 
         return $e;
     }

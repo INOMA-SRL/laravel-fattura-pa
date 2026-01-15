@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Condividendo\FatturaPA\Entities;
 
 use Brick\Math\BigDecimal;
+use Condividendo\FatturaPA\Enums\Nature;
 use Condividendo\FatturaPA\Tags\Item as ItemTag;
 use Condividendo\FatturaPA\Traits\Makeable;
 use Condividendo\FatturaPA\Traits\UsesDecimal;
@@ -36,6 +37,8 @@ class Item extends Entity {
      * @var array<\Condividendo\FatturaPA\Entities\OtherManagementData>
      */
     private ?array $otherManagementData = null;
+
+    private \Condividendo\FatturaPA\Enums\Nature|string|null $nature = null;
 
     public function number(int $lineNumber): self {
         $this->lineNumber = $lineNumber;
@@ -113,6 +116,12 @@ class Item extends Entity {
         return $this;
     }
 
+    public function nature(Nature|string $nature): self {
+        $this->nature = $nature;
+
+        return $this;
+    }
+
     public function getTag(): ItemTag {
         $tag = ItemTag::make()
             ->setLineNumber($this->lineNumber)
@@ -135,6 +144,10 @@ class Item extends Entity {
 
         if ($this->otherManagementData) {
             $tag->setOtherManagementData(array_map(fn (\Condividendo\FatturaPA\Entities\OtherManagementData $otherManagementData) => $otherManagementData->getTag(), $this->otherManagementData));
+        }
+
+        if ($this->nature) {
+            $tag->setNature($this->nature);
         }
 
         return $tag;
