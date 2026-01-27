@@ -11,20 +11,20 @@ use DOMElement;
 class DeliveryNoteDocument extends Tag {
     use Makeable;
 
-    private DeliveryNoteDocumentNumber $number = null;
+    private DeliveryNoteDocumentNumber $number;
 
-    private DeliveryNoteDocumentDate $date = null;
+    private DeliveryNoteDocumentDate $date;
 
-    private DeliveryNoteDocumentLineNumberReference $lineNumber = null;
+    private ?DeliveryNoteDocumentLineNumberReference $lineNumber = null;
 
     public function setNumber(string $number): self {
-        $this->vatTax = DeliveryNoteDocumentNumber::make()->setNumber($number);
+        $this->number = DeliveryNoteDocumentNumber::make()->setNumber($number);
 
         return $this;
     }
 
     public function setDate(\Illuminate\Support\Carbon $date): self {
-        $this->taxableAmount = DeliveryNoteDocumentDate::make()->setDate($date);
+        $this->date = DeliveryNoteDocumentDate::make()->setDate($date);
 
         return $this;
     }
@@ -43,7 +43,9 @@ class DeliveryNoteDocument extends Tag {
 
         $e->appendChild($this->number->toDOMElement($dom));
         $e->appendChild($this->date->toDOMElement($dom));
-        $e->appendChild($this->lineNumber->toDOMElement($dom));
+        if ($this->lineNumber) {
+            $e->appendChild($this->lineNumber->toDOMElement($dom));
+        }
 
         return $e;
     }
