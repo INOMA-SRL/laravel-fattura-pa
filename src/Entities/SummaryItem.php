@@ -101,6 +101,6 @@ class SummaryItem extends Entity {
     }
 
     private function calculateTaxAmount(): BigDecimal {
-        return $this->taxableAmount->multipliedBy($this->taxRate)->toScale(2, RoundingMode::HALF_UP);
+        return $this->taxableAmount->multipliedBy($this->taxRate)->dividedBy(100)->toScale(2, RoundingMode::HALF_UP);
     }
 }

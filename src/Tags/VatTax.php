@@ -14,11 +14,8 @@ class VatTax extends Tag {
 
     private ?\Brick\Math\BigDecimal $percentage = null;
 
-    /**
-     * @param  \Brick\Math\BigDecimal  $ratio  Percentage as a ratio between [0,1]
-     */
-    public function setRate(BigDecimal $ratio): self {
-        $this->percentage = $ratio;
+    public function setRate(BigDecimal $percentage): self {
+        $this->percentage = $percentage;
 
         return $this;
     }
@@ -27,6 +24,6 @@ class VatTax extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('AliquotaIVA', $this->percentage->multipliedBy(100)->__toString());
+        return $dom->createElement('AliquotaIVA', $this->percentage->__toString());
     }
 }
