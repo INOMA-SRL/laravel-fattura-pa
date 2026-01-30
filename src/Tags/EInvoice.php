@@ -45,7 +45,7 @@ class EInvoice extends Tag {
     public function toDOMElement(DOMDocument $dom): DOMElement {
         $e = $dom->createElementNS(
             'http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2',
-            'q1:FatturaElettronica'
+            'p:FatturaElettronica'
         );
 
         $e->setAttribute('versione', $this->format->value);
