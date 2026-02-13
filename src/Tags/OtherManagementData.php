@@ -56,9 +56,9 @@ class OtherManagementData extends Tag {
             $e->appendChild($this->textReference->toDOMElement($dom));
         }
 
-        if ($this->numberReference) {
+        /*if ($this->numberReference) {
             $e->appendChild($this->numberReference->toDOMElement($dom));
-        }
+        }*/
 
         if ($this->dateReference) {
             $e->appendChild($this->dateReference->toDOMElement($dom));
