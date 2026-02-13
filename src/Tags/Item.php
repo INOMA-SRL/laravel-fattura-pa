@@ -127,16 +127,16 @@ class Item extends Tag {
             $e->appendChild($this->unitMeasure->toDOMElement($dom));
         }
 
-        foreach ($this->otherManagementData ?? [] as $otherManagementData) {
-            $e->appendChild($otherManagementData->toDOMElement($dom));
-        }
-
         $e->appendChild($this->unitPrice->toDOMElement($dom));
         $e->appendChild($this->totalPrice->toDOMElement($dom));
         $e->appendChild($this->vatTax->toDOMElement($dom));
 
         if ($this->nature) {
             $e->appendChild($this->nature->toDOMElement($dom));
+        }
+
+        foreach ($this->otherManagementData ?? [] as $otherManagementData) {
+            $e->appendChild($otherManagementData->toDOMElement($dom));
         }
 
         return $e;
