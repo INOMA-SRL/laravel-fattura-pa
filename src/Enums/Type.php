@@ -24,4 +24,6 @@ final class Type extends Enum {
     public const string TD05 = 'TD05';
 
     public const string TD06 = 'TD06';
+
+    public const string TD24 = 'TD24';
 }
