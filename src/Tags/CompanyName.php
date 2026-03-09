@@ -23,6 +23,9 @@ class CompanyName extends Tag {
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement {
-        return $dom->createElement('Denominazione', $this->name);
+        $element = $dom->createElement('Denominazione');
+        $element->appendChild($dom->createTextNode($this->name));
+
+        return $element;
     }
 }
